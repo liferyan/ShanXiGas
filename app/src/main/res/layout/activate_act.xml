@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <include layout="@layout/layout_title" />
+
+  <LinearLayout
+    android:id="@+id/ll_card_no"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_below="@id/title"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      style="@style/txt_activateLeftStyle"
+      android:layout_height="wrap_content"
+      android:text="@string/activate_card_no"
+      android:textSize="17sp" />
+
+    <TextView
+      android:id="@+id/tv_card_no"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:textColor="@color/colorPrimary"
+      android:textColorHint="@color/colorPrimary"
+      android:textSize="15sp"
+      tools:text="0021111111" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/ll_gas_price"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/ll_card_no"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      style="@style/txt_activateLeftStyle"
+      android:layout_height="wrap_content"
+      android:text="@string/activate_user_name"
+      android:textSize="17sp" />
+
+    <TextView
+      android:id="@+id/tv_gas_price"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:textColor="@color/colorPrimary"
+      android:textColorHint="@color/colorPrimary"
+      android:textSize="15sp"
+      tools:text="张三" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/ll_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_below="@id/ll_gas_price"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      style="@style/txt_activateLeftStyle"
+      android:layout_height="wrap_content"
+      android:text="@string/activate_address"
+      android:textSize="17sp" />
+
+    <TextView
+      android:id="@+id/tv_address"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:textColor="@color/colorPrimary"
+      android:textColorHint="@color/colorPrimary"
+      android:textSize="15sp"
+      tools:text="雁塔区高新四路高新九号广场" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/ll_gap_type"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_below="@id/ll_address"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      style="@style/txt_activateLeftStyle"
+      android:layout_height="wrap_content"
+      android:text="@string/activate_gap_type"
+      android:textSize="17sp" />
+
+    <TextView
+      android:id="@+id/tv_gap_type"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:textColor="@color/colorPrimary"
+      android:textColorHint="@color/colorPrimary"
+      android:textSize="15sp"
+      tools:text="非接触金额表" />
+  </LinearLayout>
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:layout_above="@+id/bt_activate"
+    android:text="@string/activate_tips_on_activate"
+    android:textSize="14sp" />
+
+  <Button
+    android:id="@+id/bt_activate"
+    style="@style/buttonStyle"
+    android:layout_marginTop="14dp"
+    android:layout_marginBottom="36dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:text="@string/activate_button_activate" />
+</RelativeLayout>

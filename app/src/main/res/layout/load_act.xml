@@ -1,0 +1,223 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical">
+
+  <include layout="@layout/layout_title" />
+
+
+  <LinearLayout
+    android:id="@+id/ll_ballance"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal">
+
+    <TextView
+      style="@style/txt_loadLeftStyle"
+      android:text="@string/load_balance" />
+
+    <TextView
+      android:id="@+id/tv_balance"
+      style="@style/txt_loadRightStyle"
+      android:textColor="@color/red"
+      tools:text="100元" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/ll_card_no"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal">
+
+    <TextView
+      style="@style/txt_loadLeftStyle"
+      android:text="@string/load_card_no" />
+
+    <TextView
+      android:id="@+id/tv_card_no"
+      style="@style/txt_loadRightStyle"
+      tools:text="0021111111" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/ll_other"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+      android:id="@+id/ll_gap_count"
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:orientation="horizontal"
+      android:visibility="gone">
+
+      <TextView
+        style="@style/txt_loadLeftStyle"
+        android:text="@string/load_gap_count" />
+
+      <TextView
+        android:id="@+id/tv_gap_count"
+        style="@style/txt_loadRightStyle" />
+    </LinearLayout>
+
+
+    <LinearLayout
+      android:id="@+id/ll_gas_price"
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:orientation="horizontal">
+
+      <TextView
+        style="@style/txt_loadLeftStyle"
+        android:text="@string/load_gas_price" />
+
+      <TextView
+        android:id="@+id/tv_gas_price"
+        style="@style/txt_loadRightStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/ll_load_limit"
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:orientation="horizontal">
+
+      <TextView
+        style="@style/txt_loadLeftStyle"
+        android:text="@string/load_limit_money" />
+
+      <TextView
+        android:id="@+id/tv_load_limit"
+        style="@style/txt_loadRightStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/ll_wg_years"
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:orientation="horizontal"
+      android:visibility="gone">
+
+      <TextView
+        style="@style/txt_loadLeftStyle"
+        android:text="@string/load_wg_years_count" />
+
+      <TextView
+        android:id="@+id/tv_wg_years"
+        style="@style/txt_loadRightStyle" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/ll_wg_price"
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:orientation="horizontal"
+      android:visibility="gone">
+
+      <TextView
+        style="@style/txt_loadLeftStyle"
+        android:text="@string/load_wg_price" />
+
+      <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/sp_wg_price"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:spinnerMode="dropdown" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+      android:id="@+id/ll_load_money"
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:orientation="horizontal">
+
+      <TextView
+        style="@style/txt_loadLeftStyle"
+        android:text="@string/load_money_to_load" />
+
+      <EditText
+        android:id="@+id/et_load_money"
+        style="@style/txt_loadRightStyle"
+        android:background="@null"
+        android:hint="@string/load_input_money"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/colorAccent"
+        tools:text="1" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/ll_total_money"
+      android:layout_width="match_parent"
+      android:layout_height="45dp"
+      android:orientation="horizontal"
+      android:visibility="gone">
+
+      <TextView
+        style="@style/txt_loadLeftStyle"
+        android:textStyle="bold"
+        android:text="@string/load_total_money" />
+
+      <TextView
+        android:id="@+id/tv_total_money"
+        style="@style/txt_loadRightStyle" />
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <TextView
+    android:id="@+id/tv_tips_load_success"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:text="@string/load_tips_load_success"
+    android:textColor="@color/red"
+    android:textSize="16sp"
+    android:visibility="gone" />
+
+  <Space
+    android:layout_width="match_parent"
+    android:layout_height="20dp" />
+
+  <Button
+    android:id="@+id/bt_load"
+    style="@style/buttonStyle"
+    android:layout_margin="16dp"
+    android:text="@string/load_button_pay" />
+
+  <Space
+    android:layout_width="match_parent"
+    android:layout_height="20dp" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:orientation="vertical">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/load_friendly_tips" />
+
+    <TextView
+      android:id="@+id/tv_tips"
+      android:layout_marginTop="5dp"
+
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:lineSpacingExtra="3dp"
+      android:text="@string/load_tips_load"
+      android:textSize="14sp" />
+
+  </LinearLayout>
+
+
+</LinearLayout>
+
+

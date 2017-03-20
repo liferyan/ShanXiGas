@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="70dp">
+  <TextView
+    android:id="@+id/tv_order_no"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    tools:text="201702929284734547" />
+  <TextView
+    android:id="@+id/tv_amount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:textSize="18sp"
+    tools:text="100元" />
+  <TextView
+    android:id="@+id/tv_create_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    tools:text="2017-01-09 13:45:56" />
+  <TextView
+    android:id="@+id/tv_pay_status"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    tools:text="支付成功" />
+
+</RelativeLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#03A9F4</color>
+  <color name="colorPrimaryDark">#0288D1</color>
+  <color name="colorAccent">#68A1D0</color>
+
+  <color name="white">#ffffff</color>
+
+  <color name="red_normal">#CE3D3A</color>
+  <color name="red_pressed">#B53532</color>
+
+  <color name="black">#ff000000</color>
+  <color name="grey">#d7d7db</color>
+
+  <color name="red">#FC2828</color>
+
+  <color name="gray">#ff808080</color>
+
+  <color name="green">#2EAE3F</color>
+
+  <!--点击颜色-->
+  <color name="bgColor_alert_button_press">#EAEAEA</color>
+  <!--窗口背景颜色-->
+  <color name="bgColor_alertview_alert">#f8f8f8</color>
+  <color name="bgColor_alertview_alert_start">#f0f0f0</color>
+
+</resources>

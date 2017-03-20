@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <include layout="@layout/layout_title" />
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fadingEdge="vertical"
+    android:scrollbars="vertical">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_card_no"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/cardNo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="0021111111" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_order_no"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/orderNo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="20110311123945123456" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_pay_no"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/payNo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="20110311123945123456" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_amount"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/amount"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#2EAE3F"
+          android:textSize="14sp"
+          tools:text="100元" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_red_amt"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/redAmt"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#2EAE3F"
+          android:textSize="14sp"
+          tools:text="100元" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_vch_amt"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/vchAmt"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#2EAE3F"
+          android:textSize="14sp"
+          tools:text="100元" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_pot_chg_amt"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/potChgAmt"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#2EAE3F"
+          android:textSize="14sp"
+          tools:text="100元" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_contract_name"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/contractName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="大文本" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_invoice_title"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/invoiceTitle"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="大文本" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_bank_name"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/bankName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="中国工商银行" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_mobile"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/mobile"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="13167173501" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_wg_cash"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/wgCash"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#2EAE3F"
+          android:textSize="14sp"
+          tools:text="1元" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_wg_start_time"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/wgStartTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="1元" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_wg_end_time"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/wgEndTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="1元" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_status"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/status"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="14sp"
+          tools:text="支付成功" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_create_time"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/createTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="2017-12-12 17:45:23" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+          android:layout_width="110dp"
+          android:layout_height="wrap_content"
+          android:text="@string/trx_detail_update_time"
+          android:textColor="#949494"
+          android:textSize="14sp" />
+
+        <TextView
+          android:id="@+id/updateTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#949494"
+          android:textSize="14sp"
+          tools:text="2017-12-12 17:45:23" />
+      </LinearLayout>
+
+      <Button
+        android:id="@+id/bt_order_cancel"
+        style="@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/transaction_records_button_order_cancel"
+        android:visibility="gone" />
+
+    </LinearLayout>
+
+  </ScrollView>
+
+</LinearLayout>

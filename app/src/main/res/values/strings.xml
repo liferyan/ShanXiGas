@@ -1,0 +1,91 @@
+<resources>
+  <string name="app_name">秦华天然气</string>
+
+  <string name="application_se_connect_failed">SE连接失败 !</string>
+  <string name="application_begin_load_data">开始加载数据</string>
+  <string name="application_end_load_data">加载数据完毕</string>
+  <string name="application_start_connect_card_app">开始连接卡应用</string>
+  <string name="application_end_connect_card_app">卡应用连接成功</string>
+
+  <string name="splash_card_app_connect_failed">应用连接失败,请稍后再试 !</string>
+
+  <string name="read_card_nfc_has_disabled">NFC功能已禁用,请开启再试 !</string>
+  <string name="read_card_phone_no_nfc">设备不支持NFC,请稍后再试 !</string>
+  <string name="read_card_nfc_tips">请将燃气卡置于NFC手机背面</string>
+
+  <string name="activate_title">激活</string>
+  <string name="activate_card_no">卡号:</string>
+  <string name="activate_user_name">姓名:</string>
+  <string name="activate_address">住址:</string>
+  <string name="activate_gap_type">燃气表类型:</string>
+  <string name="activate_button_activate">激 活</string>
+  <string name="activate_tips_on_activate">您将激活陕西燃气卡应用，完成后可在陕西省燃气系统中使用此应用，激活过程，
+    请务必保持网络畅通，谢谢 ！</string>
+
+
+  <string name="main_to_load">空中充值</string>
+  <string name="main_to_transaction_records">交易记录</string>
+  <string name="main_to_settings">设置</string>
+  <string name="main_card_no">卡号:</string>
+  <string name="main_balance">余额:</string>
+
+  <string name="load_title">空中充值</string>
+  <string name="load_pay_title">和包支付</string>
+  <string name="load_title_refresh_balance">刷新余额</string>
+  <string name="load_gas_price">购气单价:</string>
+  <string name="load_gap_count">购气次数:</string>
+  <string name="load_input_money">请输入购气金额</string>
+  <string name="load_balance">余额:</string>
+  <string name="load_card_no">燃气卡卡号:</string>
+  <string name="load_wg_price">维管单价:</string>
+  <string name="load_wg_years_count">维管计费年数:</string>
+  <string name="load_limit_money">限购金额:</string>
+  <string name="load_money_to_load">购气金额:</string>
+  <string name="load_total_money">合计总额:</string>
+  <string name="load_button_pay">充 值</string>
+  <string name="load_friendly_tips">友情提示:</string>
+  <string name="load_tips_load">\t\t使用手机给天然气表充值（简称上表）操作前手机需要打开NFC功能，上表操作无需
+    打开本插件。如果您在打开本插件的情况下，进行上表操作，请在上表成功后，点击右上角的刷新余额按钮。如遇购气成功 ，
+    但无法上表，请与秦华天然气公司联系，谢谢 ！</string>
+  <string name="load_tips_load_success">亲,请您先上表,刷新余额后,再进行充值操作 !</string>
+
+  <string name="settings_default_account_key">account</string>
+  <string name="settings_default_account_label">设置默认充值和包账号</string>
+  <string name="settings_customer_service_key">customer_service</string>
+  <string name="settings_customer_service_phone_number">96777</string>
+  <string name="settings_customer_service_phone_number_intent">tel:96777</string>
+  <string name="settings_customer_service_label">客服</string>
+  <string name="settings_app_version_label">版本号</string>
+  <string name="settings_title">设置</string>
+  <string name="settings_app_version_key">app_version</string>
+  <string name="settings_has_latest_version">已经是最新版本 !</string>
+  <string name="settings_failed_to_check_mobile_msg">请输入合法手机号 !</string>
+
+  <string name="dialog_alert_button_determine">确 定</string>
+  <string name="dialog_alert_title">注意</string>
+
+  <string name="transaction_records_title">交易记录</string>
+  <string name="transaction_records_detail_title">详情</string>
+  <string name="transaction_records_button_order_cancel">撤 销</string>
+  <string name="transaction_records_no_record">没有交易记录</string>
+  <string name="transaction_record_load_no_data">加载完成,没有更多数据了…</string>
+  <string name="transaction_records_loading">正在加载…</string>
+  <string name="trx_detail_card_no">天然气卡号:</string>
+  <string name="trx_detail_order_no">订单编号:</string>
+  <string name="trx_detail_pay_no">交易流水号:</string>
+  <string name="trx_detail_amount">圈存金额:</string>
+  <string name="trx_detail_red_amt">电子券金额:</string>
+  <string name="trx_detail_vch_amt">代金券金额:</string>
+  <string name="trx_detail_pot_chg_amt">积分金额:</string>
+  <string name="trx_detail_contract_name">送货信息:</string>
+  <string name="trx_detail_invoice_title">发票抬头:</string>
+  <string name="trx_detail_bank_name">支付银行:</string>
+  <string name="trx_detail_mobile">支付账号:</string>
+  <string name="trx_detail_wg_cash">维管费金额:</string>
+  <string name="trx_detail_wg_start_time">维管费起始日期:</string>
+  <string name="trx_detail_wg_end_time">维管费结束日期:</string>
+  <string name="trx_detail_status">状态:</string>
+  <string name="trx_detail_create_time">创建时间:</string>
+  <string name="trx_detail_update_time">更新时间:</string>
+
+</resources>

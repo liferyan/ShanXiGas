@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.cosw.shanxigas">
+
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.NFC" />
+  <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+  <uses-feature android:name="android.hardware.nfc" />
+
+  <application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:name="com.cosw.shanxigas.app.MyApplication"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity
+      android:name="com.cosw.shanxigas.app.SplashActivity"
+      android:screenOrientation="portrait">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity
+      android:name="com.cosw.shanxigas.activate.ActivateActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.readcard.ReadCardActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.app.MainActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:launchMode="singleTop"
+      android:name="com.cosw.shanxigas.load.LoadActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.load.PayWebActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.load.PayResultActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.trxrecords.TransactionRecordsActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.settings.SettingsActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.trxrecords.TransactionDetailActivity"
+      android:screenOrientation="portrait" />
+    <activity
+      android:name="com.cosw.shanxigas.hidden.HiddenActivity"
+      android:screenOrientation="portrait" />
+    <activity android:name="com.cosw.shanxigas.hidden.AppLogActivity" />
+  </application>
+
+</manifest>

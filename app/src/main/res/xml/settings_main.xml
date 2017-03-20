@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+  android:title="@string/settings_title">
+
+  <EditTextPreference
+    android:icon="@drawable/ic_account_grey600_24dp"
+    android:inputType="numberDecimal"
+    android:key="@string/settings_default_account_key"
+    android:selectAllOnFocus="true"
+    android:title="@string/settings_default_account_label" />
+
+  <!-- <Preference
+     android:icon="@drawable/ic_account_grey600_24dp"
+     android:key="@string/settings_customer_service_key"
+     android:title="@string/settings_customer_service_label">
+     <intent
+       android:action="android.intent.action.CALL"
+       android:data="@string/settings_customer_service_phone_number_intent" />
+   </Preference>-->
+
+  <Preference
+    android:icon="@drawable/ic_information_outline_grey600_24dp"
+    android:key="@string/settings_app_version_key"
+    android:title="@string/settings_app_version_label" />
+
+</PreferenceScreen>
