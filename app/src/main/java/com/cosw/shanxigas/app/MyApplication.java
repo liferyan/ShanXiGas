@@ -26,6 +26,7 @@ import com.cosw.shanxigas.card.CardException;
 import com.cosw.shanxigas.card.CardFactory;
 import com.cosw.shanxigas.card.ICard;
 import com.cosw.shanxigas.settings.SettingsActivity;
+import com.cosw.shanxigas.util.CrashHandler;
 import com.cosw.shanxigas.util.DataUtil;
 import com.cosw.shanxigas.util.LogUtils;
 import com.cosw.shanxigas.util.net.RequestFactory;
@@ -75,6 +76,9 @@ public class MyApplication extends Application {
   public void onCreate() {
     super.onCreate();
     app = this;
+
+    CrashHandler crashHandler = CrashHandler.getInstance();
+    crashHandler.init(this);
 
     LogUtils.i(TAG, "\r\r----------------------------应用开始启动------------------------\r\n");
     new SEService(this, new CallBack() {
