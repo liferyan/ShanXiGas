@@ -51,8 +51,8 @@ public class LoadActivity extends BaseActivity implements LoadContract.View,
   private ImageView ivTitleLeft;
   private TextView tvRefresh;
 
-  private String priceStr;
-  private String loadLimitStr;
+  private String priceStr = "0";
+  private String loadLimitStr = "0";
 
   private String loadMoney;
   private int loadLimitAmount;
@@ -146,6 +146,7 @@ public class LoadActivity extends BaseActivity implements LoadContract.View,
   @Override
   public void setCardBasicInfo(String balance, String cardNo) {
     setCardFullInfo(balance, cardNo, priceStr, loadLimitStr);
+    setLoadEnable(true);
   }
 
   @Override
@@ -157,11 +158,12 @@ public class LoadActivity extends BaseActivity implements LoadContract.View,
     tvCardNo.setText(cardNo);
     tvGasPrice.setText(price);
     tvLoadLimit.setText(loadLimit);
-    loadEnable(Integer.parseInt(balance));
   }
 
-  private void loadEnable(int balance) {
-    if (balance == 0) {
+  @Override
+  public void setLoadEnable(boolean hasBalance) {
+    if (!hasBalance) {
+      //余额为0
       otherContent.setVisibility(View.VISIBLE);
       tipsLoadSuccess.setVisibility(View.GONE);
       btLoad.setEnabled(true);
