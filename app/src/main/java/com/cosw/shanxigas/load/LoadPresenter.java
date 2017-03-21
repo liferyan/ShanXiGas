@@ -10,7 +10,6 @@ import static com.cosw.shanxigas.util.Constant.LOAD_SUCCESS_MSG;
 
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import com.cosw.protocol.enums.LoadStatusEnum;
 import com.cosw.protocol.resp.QueryCardInfoForPriceResp;
 import com.cosw.shanxigas.app.MyApplication;
@@ -51,6 +50,7 @@ public class LoadPresenter implements LoadContract.Presenter,
               .setCardFullInfo(NumberFormat.getCurrencyInstance().format(balance) + "元", mCardNo,
                   resp.getPrice(),
                   String.valueOf(resp.getMaxPrice()));
+          mLoadView.setLoadEnable(balance != 0);
           break;
         case QUERY_INFO_FAILED:
           setMessage(LOAD_FAILED_TO_GET_CARD_INFO_MSG);
@@ -112,17 +112,18 @@ public class LoadPresenter implements LoadContract.Presenter,
     mLoadView
         .setCardFullInfo(NumberFormat.getCurrencyInstance().format(balance) + "元", mCardNo, price,
             loadLimit);
+    mLoadView.setLoadEnable(balance != 0);
   }
 
   @Override
   public void pay(final String loadMoney) {
     mLoadView.showLoading(LOAD_LOADING_PAY);
     //单位为元
-    if (!TextUtils.isEmpty(loadMoney) && TextUtils.isDigitsOnly(loadMoney)) {
+    /*if (!TextUtils.isEmpty(loadMoney) && TextUtils.isDigitsOnly(loadMoney)) {
       loadAmount = Integer.parseInt(loadMoney);
       mModel.heBaoWapPay(loadAmount * 100, this);
-    }
-    /*Handler mHandler = new Handler();
+    }*/
+    Handler mHandler = new Handler();
     mHandler.postDelayed(new Runnable() {
       @Override
       public void run() {
@@ -130,7 +131,7 @@ public class LoadPresenter implements LoadContract.Presenter,
         loadAmount = Integer.parseInt(loadMoney);
         load();
       }
-    }, 2000);*/
+    }, 2000);
   }
 
   @Override
