@@ -160,6 +160,10 @@ public class MyApplication extends Application {
   }
 
   public void setATR(String atr) {
+    /*if (atr == null) {
+      mATR = "3B9F95803FC7A08031E073FE211B633A104E83009000";
+      return;
+    }*/
     mATR = atr;
   }
 
