@@ -17,6 +17,8 @@ public interface LoadContract {
 
     void setCardFullInfo(String balance, String cardNo, String price, String loadLimit);
 
+    void setLoadEnable(boolean hasBalance);
+
     void goToPay(String url, String method, String sessionId);
   }
 
