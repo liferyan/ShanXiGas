@@ -104,6 +104,11 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
   }
 
   @Override
+  public void setLoadEnable(boolean hasBalance) {
+
+  }
+
+  @Override
   public void goToPay(String url, String method, String sessionId) {
   }
 }
