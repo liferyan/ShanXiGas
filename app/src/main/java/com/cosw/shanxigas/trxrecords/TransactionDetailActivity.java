@@ -1,10 +1,8 @@
 package com.cosw.shanxigas.trxrecords;
 
 import static com.cosw.shanxigas.util.Constant.EXTRA_ORDER_NO;
-import static com.cosw.shanxigas.util.Constant.HAS_CANCEL;
 import static com.cosw.shanxigas.util.Constant.TRX_STATUS_LOAD_SUCCESS;
 import static com.cosw.shanxigas.util.Constant.TRX_STATUS_REVERSAL_SUCCESS;
-import static com.cosw.shanxigas.util.Constant.WAIT_PAY;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,7 +10,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.cosw.shanxigas.R;
@@ -33,9 +30,6 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
   private TextView tvRedAmt;
   private TextView tvVchAmt;
   private TextView tvPotChgAmt;
-  private TextView tvContractName;
-  private TextView tvInvoiceTitle;
-  private TextView tvBankName;
   private TextView tvMobile;
   private TextView tvWgCash;
   private TextView tvWgStartTime;
@@ -43,7 +37,6 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
   private TextView tvStatus;
   private TextView tvCreateTime;
   private TextView tvUpdateTime;
-  private TextView btOrderCancel;
 
 
   private TrxRecordsContract.Presenter mPresenter;
@@ -72,9 +65,6 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
     tvRedAmt = (TextView) findViewById(R.id.redAmt);
     tvVchAmt = (TextView) findViewById(R.id.vchAmt);
     tvPotChgAmt = (TextView) findViewById(R.id.potChgAmt);
-    tvContractName = (TextView) findViewById(R.id.contractName);
-    tvInvoiceTitle = (TextView) findViewById(R.id.invoiceTitle);
-    tvBankName = (TextView) findViewById(R.id.bankName);
     tvMobile = (TextView) findViewById(R.id.mobile);
     tvWgCash = (TextView) findViewById(R.id.wgCash);
     tvWgStartTime = (TextView) findViewById(R.id.wgStartTime);
@@ -91,13 +81,6 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
       @Override
       public void onClick(View v) {
         finish();
-      }
-    });
-    btOrderCancel = (Button) findViewById(R.id.bt_order_cancel);
-    btOrderCancel.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        mPresenter.orderCancel(orderNo);
       }
     });
   }
@@ -125,9 +108,6 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
     tvRedAmt.setText(detail.getRedAmt());
     tvVchAmt.setText(detail.getVchAmt());
     tvPotChgAmt.setText(detail.getPotChgAmt());
-    tvContractName.setText(detail.getContractName());
-    tvInvoiceTitle.setText(detail.getInvoiceTitle());
-    tvBankName.setText(detail.getBankName());
     tvMobile.setText(detail.getMobile());
     tvWgCash.setText(detail.getWgCash());
     tvWgStartTime.setText(detail.getWgStartTime());
@@ -144,16 +124,5 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
 
     tvCreateTime.setText(detail.getCreateTime());
     tvUpdateTime.setText(detail.getUpdateTime());
-    if (WAIT_PAY.equals(detail.getStatus())) {
-      btOrderCancel.setVisibility(View.VISIBLE);
-    } else {
-      btOrderCancel.setVisibility(View.GONE);
-    }
-  }
-
-  @Override
-  public void setCancelSuccess() {
-    tvStatus.setText(HAS_CANCEL);
-    btOrderCancel.setVisibility(View.GONE);
   }
 }

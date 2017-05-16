@@ -4,8 +4,7 @@ public final class Constant {
 
   //Network Related
   /*URL= "http://120.192.246.66:9092/airdeposit-trans/service/biz.htm";*/
-  //public static final String SERVER_IP_PORT = "120.192.246.66:9092";
-  private static final String SERVER_IP_PORT = "192.168.191.1:8080";
+  private static final String SERVER_IP_PORT = "120.192.246.66:9092";
   public static final String SERVER_URL =
       "http://" + SERVER_IP_PORT + "/airdeposit-trans/service/biz.htm";
 
@@ -34,9 +33,6 @@ public final class Constant {
 
   public static final String TRANS_TIME_DATA_FORMAT = "yyyy-MM-dd HH:mm:ss";
   public static final String LOAD_TRANS_NUM_DATA_FORMAT = "yyyyMMddHHmmss";
-
-  public static final String HAS_CANCEL = "已撤销";
-  public static final String WAIT_PAY = "待支付";
 
   public static final String INITIAL_CARD_NO = "0000000000";
   public static final String INITIAL_ACCOUNT = "00000000000";
@@ -82,8 +78,5 @@ public final class Constant {
   public static final String TRX_STATUS_LOAD_SUCCESS = "圈存成功";
   public static final String TRX_STATUS_REVERSAL_SUCCESS = "冲正成功";
   public static final String TRX_LOADING_QUERY_ORDER = "加载中...";
-  public static final String TRX_LOADING_ORDER_CANCEL = "撤销中...";
   public static final String TRX_FAILED_TO_LOADING_MSG = "加载失败 !";
-  public static final String TRX_ORDER_CANCEL_SUCCESS_MSG = "撤销成功 !";
-  public static final String TRX_ORDER_CANCEL_FAILED_MSG = "撤销失败 !";
 }

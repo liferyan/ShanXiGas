@@ -23,13 +23,9 @@ public class TrxRecordsContract {
     void setData(List<TrxRecords> trxRecordsList);
 
     void setDetail(TrxDetail detail);
-
-    void setCancelSuccess();
   }
 
   interface Presenter extends BasePresenter {
-
-    void orderCancel(String orderNo);
 
     void getQueryOrderList(int hasLoadedCount);
 
@@ -52,18 +48,9 @@ public class TrxRecordsContract {
       void onLoadQueryOrderDetailFailed();
     }
 
-    interface OrderCancelCallback {
-
-      void onOrderCancelSuccess();
-
-      void onOrderCancelFailed();
-    }
-
     void loadQueryOrderList(int hasLoadedCount, LoadQueryOrderListCallback callback);
 
     void loadQueryOrderDetail(String orderNo, LoadQueryOrderDetailCallback callback);
-
-    void orderCancel(String orderNo, OrderCancelCallback callback);
 
   }
 }

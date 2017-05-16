@@ -149,8 +149,4 @@ public class TransactionRecordsActivity extends BaseActivity implements TrxRecor
   @Override
   public void setDetail(TrxDetail detail) {
   }
-
-  @Override
-  public void setCancelSuccess() {
-  }
 }

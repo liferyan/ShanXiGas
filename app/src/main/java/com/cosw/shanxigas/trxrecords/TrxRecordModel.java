@@ -2,10 +2,8 @@ package com.cosw.shanxigas.trxrecords;
 
 import static com.cosw.shanxigas.util.Constant.SERVER_URL;
 
-import com.cosw.protocol.req.OrderCancelReq;
 import com.cosw.protocol.req.QueryOrderDetailReq;
 import com.cosw.protocol.req.QueryOrderListReq;
-import com.cosw.protocol.resp.OrderCancelResp;
 import com.cosw.protocol.resp.QueryOrderDetailResp;
 import com.cosw.protocol.resp.QueryOrderListResp;
 import com.cosw.shanxigas.app.MyApplication;
@@ -104,11 +102,8 @@ public class TrxRecordModel implements TrxRecordsContract.Model {
         }
         TrxDetail detail = new TrxDetail();
         detail.setAmount(resp.getAmount());
-        detail.setBankName(resp.getBankName());
         detail.setCardNo(resp.getCardNo());
-        detail.setContractName(resp.getContractName());
         detail.setCreateTime(resp.getCreateTime());
-        detail.setInvoiceTitle(resp.getInvoiceTitle());
         detail.setMobile(resp.getMobile());
         detail.setPayNo(resp.getPayNo());
         detail.setPotChgAmt(resp.getPotChgAmt());
@@ -127,32 +122,6 @@ public class TrxRecordModel implements TrxRecordsContract.Model {
       public void onError(Throwable throwable) {
         LogUtils.e(TAG, "loadQueryOrderDetail: ", throwable);
         callback.onLoadQueryOrderDetailFailed();
-      }
-    });
-  }
-
-  @Override
-  public void orderCancel(String orderNo, final OrderCancelCallback callback) {
-    OrderCancelReq req = new OrderCancelReq();
-    req.setOrderNo(orderNo);
-    req.setCardNo(app.getCardNo());
-    reqJson = mGson.toJson(req);
-    RequestFactory.getRequestManager().post(SERVER_URL, reqJson, new IRequestCallback() {
-      @Override
-      public void onSuccess(String response) {
-        OrderCancelResp resp = mGson.fromJson(response, OrderCancelResp.class);
-        if (!DataUtil.checkResponseSuccess(resp)) {
-          LogUtils.i(TAG, "orderCancel: " + resp.getResponseDesc());
-          callback.onOrderCancelFailed();
-          return;
-        }
-        callback.onOrderCancelSuccess();
-      }
-
-      @Override
-      public void onError(Throwable throwable) {
-        LogUtils.e(TAG, "orderCancel: ", throwable);
-        callback.onOrderCancelFailed();
       }
     });
   }

@@ -197,78 +197,6 @@
         <TextView
           android:layout_width="110dp"
           android:layout_height="wrap_content"
-          android:text="@string/trx_detail_contract_name"
-          android:textColor="#949494"
-          android:textSize="14sp" />
-
-        <TextView
-          android:id="@+id/contractName"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="#949494"
-          android:textSize="14sp"
-          tools:text="大文本" />
-      </LinearLayout>
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="14dp"
-        android:paddingRight="4dp"
-        android:orientation="horizontal">
-
-        <TextView
-          android:layout_width="110dp"
-          android:layout_height="wrap_content"
-          android:text="@string/trx_detail_invoice_title"
-          android:textColor="#949494"
-          android:textSize="14sp" />
-
-        <TextView
-          android:id="@+id/invoiceTitle"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="#949494"
-          android:textSize="14sp"
-          tools:text="大文本" />
-      </LinearLayout>
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="14dp"
-        android:paddingRight="4dp"
-        android:orientation="horizontal">
-
-        <TextView
-          android:layout_width="110dp"
-          android:layout_height="wrap_content"
-          android:text="@string/trx_detail_bank_name"
-          android:textColor="#949494"
-          android:textSize="14sp" />
-
-        <TextView
-          android:id="@+id/bankName"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="#949494"
-          android:textSize="14sp"
-          tools:text="中国工商银行" />
-      </LinearLayout>
-
-      <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="14dp"
-        android:paddingRight="4dp"
-        android:orientation="horizontal">
-
-        <TextView
-          android:layout_width="110dp"
-          android:layout_height="wrap_content"
           android:text="@string/trx_detail_mobile"
           android:textColor="#949494"
           android:textSize="14sp" />
@@ -424,15 +352,6 @@
           android:textSize="14sp"
           tools:text="2017-12-12 17:45:23" />
       </LinearLayout>
-
-      <Button
-        android:id="@+id/bt_order_cancel"
-        style="@style/buttonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/transaction_records_button_order_cancel"
-        android:visibility="gone" />
 
     </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.cosw.shanxigas.entity;
 
 /**
  * Created by Ryan on 2017/1/16.
+ * 交易明细
  */
 
 public class TrxDetail {
@@ -13,9 +14,6 @@ public class TrxDetail {
   private String redAmt;
   private String vchAmt;
   private String potChgAmt;
-  private String contractName;
-  private String invoiceTitle;
-  private String bankName;
   private String mobile;
   private String wgCash;
   private String wgStartTime;
@@ -78,30 +76,6 @@ public class TrxDetail {
 
   public void setPotChgAmt(String potChgAmt) {
     this.potChgAmt = potChgAmt;
-  }
-
-  public String getContractName() {
-    return contractName;
-  }
-
-  public void setContractName(String contractName) {
-    this.contractName = contractName;
-  }
-
-  public String getInvoiceTitle() {
-    return invoiceTitle;
-  }
-
-  public void setInvoiceTitle(String invoiceTitle) {
-    this.invoiceTitle = invoiceTitle;
-  }
-
-  public String getBankName() {
-    return bankName;
-  }
-
-  public void setBankName(String bankName) {
-    this.bankName = bankName;
   }
 
   public String getMobile() {
