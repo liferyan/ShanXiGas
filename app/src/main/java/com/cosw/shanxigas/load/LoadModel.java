@@ -241,7 +241,7 @@ public class LoadModel implements LoadContract.Model {
   @Override
   public void obtainWriteCardInfo(int loadAmount, final ObtainWriteCardInfoCallback callback) {
     LogUtils.i(TAG, "------------------------开始获取写卡信息----------------------------");
-    app.setOrderNo("20170114110924608407");
+//    app.setOrderNo("20170114110924608407");
     String random;
     try {
       mCard.transmit(SELECT_3F01);
@@ -256,6 +256,8 @@ public class LoadModel implements LoadContract.Model {
     req.setCardNo(mCardNo);
     //req.setTeller(PAY_ACCOUNT);
     gapNum = (int) (loadAmount / price);
+    //for test
+    gapNum = 1;
     req.setGapNum(String.valueOf(gapNum));
     req.setGapCount(gapCountStr);
     req.setGapCash(loadAmount);

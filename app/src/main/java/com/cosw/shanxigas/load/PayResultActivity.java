@@ -27,6 +27,7 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
   private boolean paySuccess;
 
   private LoadContract.Presenter mPresenter;
+  private MyApplication app;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
   }
 
   private void getPayResult() {
+    app = MyApplication.getInstance();
     Intent intent = getIntent();
     String orderNo = intent.getStringExtra(EXTRA_ORDER_NO);
     MyApplication.getInstance().setOrderNo(orderNo);
@@ -48,6 +50,7 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
     LogUtils.i(TAG, "PayResultActivity : " + orderNo + "|" + status + "|" + desc);
     if (PAY_SUCCESS_STATUS_CODE.equals(status)) {
       paySuccess = true;
+      app.setOrderNo(orderNo);
     } else {
       mPresenter.onPayFailed();
     }
@@ -101,6 +104,7 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
 
   @Override
   public void setCardFullInfo(String balance, String cardNo, String price, String loadLimit) {
+    setCardBasicInfo(balance, cardNo);
   }
 
   @Override

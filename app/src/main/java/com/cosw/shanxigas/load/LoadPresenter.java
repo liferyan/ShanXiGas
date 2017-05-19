@@ -35,7 +35,7 @@ public class LoadPresenter implements LoadContract.Presenter,
   private LoadContract.View mLoadView;
   private LoadContract.Model mModel;
 
-  private int loadAmount;
+  private static int loadAmount;
   private int balance;
   private String mCardNo;
 
@@ -74,8 +74,6 @@ public class LoadPresenter implements LoadContract.Presenter,
       mLoadView.setCardBasicInfo(balanceStr, mCardNo);
     } else {
       if (!hasLoadCardPriceInfo) {
-       /* mLoadView.showLoading("读取卡信息...");
-        mModel.queryCardInfoForPrice(this);*/
         mLoadView.showLoading(LOAD_LOADING_GET_CARD_INFO);
         new Thread(new Runnable() {
           @Override
@@ -91,9 +89,7 @@ public class LoadPresenter implements LoadContract.Presenter,
   public void refreshBalance() {
     mLoadView.showLoading(LOAD_LOADING_GET_CARD_INFO);
     balance = mModel.getBalance();
-    //mLoadView.setCardBasicInfo(NumberFormat.getCurrencyInstance().format(balance) + "元",mCardNo);
     mModel.queryCardInfoForPrice(this);
-    //pay("1");
   }
 
   private void setMessage(String message) {
