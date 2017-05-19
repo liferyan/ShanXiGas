@@ -353,6 +353,53 @@
           tools:text="2017-12-12 17:45:23" />
       </LinearLayout>
 
+      <LinearLayout
+        android:id="@+id/detail_load_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+          android:id="@+id/tv_tips_load_success"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="16dp"
+          android:text="@string/load_tips_not_zero"
+          android:textAlignment="center"
+          android:textColor="@color/red"
+          android:textSize="16sp" />
+      </LinearLayout>
+
+      <Button
+        android:id="@+id/bt_order_load"
+        style="@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/transaction_records_button_order_load"
+        android:visibility="gone" />
+      <Button
+        android:id="@+id/bt_order_cancel"
+        style="@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/transaction_records_button_order_cancel"
+        android:visibility="gone" />
+
+      <Button
+        android:id="@+id/bt_back"
+        style="@style/buttonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_button_green"
+        android:text="@string/transaction_records_button_back"
+        android:visibility="gone" />
+
     </LinearLayout>
 
   </ScrollView>
