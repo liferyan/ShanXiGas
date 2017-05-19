@@ -169,7 +169,7 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
 
     if ((TRX_STATUS_LOAD_SUCCESS.equals(orderStatus) || TRX_STATUS_REVERSAL_SUCCESS
         .equals(orderStatus))) {
-      tvStatus.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.green_normal));
+      tvStatus.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.green));
     } else {
       tvStatus.setTextColor(Color.RED);
     }

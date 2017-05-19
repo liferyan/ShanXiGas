@@ -394,11 +394,12 @@
         android:id="@+id/bt_back"
         style="@style/buttonStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/bg_button_green"
         android:text="@string/transaction_records_button_back"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
     </LinearLayout>
 
