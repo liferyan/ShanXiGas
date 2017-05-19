@@ -16,7 +16,8 @@
 
   <color name="gray">#ff808080</color>
 
-  <color name="green">#2EAE3F</color>
+  <color name="green_normal">#2EAE3F</color>
+  <color name="green_pressed">#1E7E3F</color>
 
   <!--点击颜色-->
   <color name="bgColor_alert_button_press">#EAEAEA</color>
