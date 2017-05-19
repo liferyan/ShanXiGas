@@ -54,7 +54,7 @@ public class CardImplUseOpenMobile implements ICard {
       if (session == null) {
         throw new CardException("不能打开Session");
       }
-      if (null == app.getATR()) {
+      if (app.getATR() == null || app.getATR().length() == 0) {
         app.setATR(StringUtil.byteArrayToHexString(session.getATR()));
       }
       channel = session.openLogicalChannel(aid);
