@@ -24,11 +24,13 @@ public interface LoadContract {
 
   interface Presenter extends BasePresenter {
 
+    void setLoadAmount(int loadAmount);
+
     void pay(String loadMoney);
 
     void load();
 
-    void refreshBalance();
+    void refreshBalance(boolean forceRefresh);
 
     void onLoadFailed();
 

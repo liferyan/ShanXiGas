@@ -99,7 +99,7 @@ public class LoadActivity extends BaseActivity implements LoadContract.View,
     tvRefresh.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        mPresenter.refreshBalance();
+        mPresenter.refreshBalance(true);
         etLoadMoney.setText("");
       }
     });

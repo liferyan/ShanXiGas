@@ -7,6 +7,7 @@ import static com.cosw.shanxigas.util.Constant.LOAD_LOADING_GET_CARD_INFO;
 import static com.cosw.shanxigas.util.Constant.LOAD_LOADING_LOAD;
 import static com.cosw.shanxigas.util.Constant.LOAD_LOADING_PAY;
 import static com.cosw.shanxigas.util.Constant.LOAD_SUCCESS_MSG;
+import static com.cosw.shanxigas.util.Constant.REFRESH_BALANCE_NOT_ZERO;
 
 import android.os.Handler;
 import android.os.Message;
@@ -34,6 +35,11 @@ public class LoadPresenter implements LoadContract.Presenter,
 
   private LoadContract.View mLoadView;
   private LoadContract.Model mModel;
+
+  @Override
+  public void setLoadAmount(int loadAmount) {
+    LoadPresenter.loadAmount = loadAmount;
+  }
 
   private static int loadAmount;
   private int balance;
@@ -86,10 +92,19 @@ public class LoadPresenter implements LoadContract.Presenter,
   }
 
   @Override
-  public void refreshBalance() {
+  public void refreshBalance(boolean forceRefresh) {
     mLoadView.showLoading(LOAD_LOADING_GET_CARD_INFO);
     balance = mModel.getBalance();
-    mModel.queryCardInfoForPrice(this);
+    if (balance == 0) {
+      mModel.queryCardInfoForPrice(this);
+    } else {
+      String balanceStr = NumberFormat.getCurrencyInstance().format(balance) + "元";
+      mLoadView.setCardBasicInfo(balanceStr, mCardNo);
+      if (forceRefresh) {
+        mLoadView.showMessage(REFRESH_BALANCE_NOT_ZERO);
+      }
+      mLoadView.hideLoading();
+    }
   }
 
   private void setMessage(String message) {
@@ -142,7 +157,7 @@ public class LoadPresenter implements LoadContract.Presenter,
   @Override
   public void onLoadSuccess() {
     //圈存成功,刷新余额
-    refreshBalance();
+    refreshBalance(false);
     setMessage(LOAD_SUCCESS_MSG);
     mModel.loadResultNotice(LoadStatusEnum.LoadSuccess);
   }

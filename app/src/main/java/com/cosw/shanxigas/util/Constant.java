@@ -34,6 +34,11 @@ public final class Constant {
   public static final String TRANS_TIME_DATA_FORMAT = "yyyy-MM-dd HH:mm:ss";
   public static final String LOAD_TRANS_NUM_DATA_FORMAT = "yyyyMMddHHmmss";
 
+  public static final String WAIT_PAY = "待支付";
+  public static final String WAIT_LOAD = "待圈存";
+  public static final String HAS_CANCEL = "已撤销";
+  public static final String BUTTON_LOAD = "圈  存";
+
   public static final String INITIAL_CARD_NO = "0000000000";
   public static final String INITIAL_ACCOUNT = "00000000000";
 
@@ -45,6 +50,7 @@ public final class Constant {
   public static final String EXTRA_SESSION_ID = "com.cosw.shanxigas.EXTRA_SESSION_ID";
   public static final String EXTRA_ORDER_NO = "com.cosw.shanxigas.EXTRA_ORDER_NO";
   public static final String EXTRA_STATUS = "com.cosw.shanxigas.EXTRA_STATUS";
+  public static final String EXTRA_LOAD_AMOUNT = "com.cosw.shanxigas.EXTRA_LOAD_AMOUNT";
   public static final String EXTRA_DESC = "com.cosw.shanxigas.EXTRA_DESC";
 
   public static final String PAY_SUCCESS_STATUS_CODE = "SUCCESS";
@@ -68,8 +74,8 @@ public final class Constant {
   public static final String LOAD_FAILED_TO_CHECK_MONEY_TOO_BIG_MSG = "购起金额超过限额,请重新输入 !";
   public static final String LOAD_FAILED_TO_GET_CARD_INFO_MSG = "获取卡信息失败 !";
   public static final String LOAD_LOADING_GET_CARD_INFO = "获取卡信息...";
-  public static final String LOAD_LOADING_PAY = "充值中...";
-  public static final String LOAD_FAILED_TO_PAY = "充值失败 !";
+  public static final String LOAD_LOADING_PAY = "圈存中...";
+  public static final String LOAD_FAILED_TO_PAY = "圈存失败 !";
   public static final String LOAD_LOADING_LOAD = "圈存中...";
   public static final String LOAD_SUCCESS_MSG = "圈存成功 !";
   public static final String LOAD_FAILED_MSG = "圈存失败 !";
@@ -78,5 +84,10 @@ public final class Constant {
   public static final String TRX_STATUS_LOAD_SUCCESS = "圈存成功";
   public static final String TRX_STATUS_REVERSAL_SUCCESS = "冲正成功";
   public static final String TRX_LOADING_QUERY_ORDER = "加载中...";
+  public static final String TRX_LOADING_ORDER_CANCEL = "撤销中...";
   public static final String TRX_FAILED_TO_LOADING_MSG = "加载失败 !";
+  public static final String TRX_ORDER_CANCEL_SUCCESS_MSG = "撤销成功 !";
+  public static final String TRX_ORDER_CANCEL_FAILED_MSG = "撤销失败 !";
+
+  public static final String REFRESH_BALANCE_NOT_ZERO = "请先上表再操作！";
 }

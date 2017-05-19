@@ -102,6 +102,7 @@ public class LoadModel implements LoadContract.Model {
 
   @Override
   public void heBaoWapPay(int payMoney, final HeBaoWapPayCallback callback) {
+    LogUtils.i(TAG, "------------------------heBaoWapPay start----------------------------");
     HeBaoWapPayReq req = new HeBaoWapPayReq();
     //单位分
     payMoney = 1;
@@ -121,6 +122,7 @@ public class LoadModel implements LoadContract.Model {
         String url = resp.getUrl();
         String method = resp.getMethod();
         String sessionId = resp.getSessionId();
+        LogUtils.i(TAG, "------------------------heBaoWapPay end----------------------------");
         callback.onGoToHeBaoWapPay(url, method, sessionId);
       }
 
@@ -134,6 +136,8 @@ public class LoadModel implements LoadContract.Model {
 
   @Override
   public void queryCardInfoForPrice(final QueryCardInfoForPriceCallback callback) {
+    LogUtils
+        .i(TAG, "------------------------queryCardInfoForPrice start----------------------------");
     String INFO2, INFO3, INFO4, INFO5;
     try {
       mCard.transmit(SELECT_3F01);
@@ -180,6 +184,8 @@ public class LoadModel implements LoadContract.Model {
         wgStartTime = resp.getWgStartTime();
         wgEndTime = resp.getWgEndTime();
         wgYears = Integer.parseInt(resp.getWgYears());
+        LogUtils.i(TAG,
+            "------------------------queryCardInfoForPrice end----------------------------");
         callback.onQueryCardInfoForPriceSuccess(priceStr, loadLimitStr);
       }
 
@@ -193,6 +199,8 @@ public class LoadModel implements LoadContract.Model {
 
   @Override
   public void queryCardInfoForPrice(Handler handler) {
+    LogUtils
+        .i(TAG, "------------------------queryCardInfoForPrice start----------------------------");
     String INFO2, INFO3, INFO4, INFO5;
     try {
       mCard.transmit(SELECT_3F01);
@@ -236,15 +244,23 @@ public class LoadModel implements LoadContract.Model {
       return;
     }
     handler.obtainMessage(QUERY_INFO_SUCCESS, resp).sendToTarget();
+    LogUtils
+        .i(TAG, "------------------------queryCardInfoForPrice end----------------------------");
   }
 
   @Override
   public void obtainWriteCardInfo(int loadAmount, final ObtainWriteCardInfoCallback callback) {
-    LogUtils.i(TAG, "------------------------开始获取写卡信息----------------------------");
+    LogUtils
+        .i(TAG, "------------------------obtainWriteCardInfo start----------------------------");
 //    app.setOrderNo("20170114110924608407");
     String random;
     try {
       mCard.transmit(SELECT_3F01);
+      //购气次数
+      if (gapCountStr == null) {
+        gapCountStr = mCard.transmit(GAP_COUNT).getData();
+        mCard.transmit(SELECT_3F01);
+      }
       random = mCard.transmit(GET_RANDOM_8).getData();
     } catch (CardException e) {
       LogUtils.e(TAG, "obtainWriteCardInfo: ", e);
@@ -291,8 +307,9 @@ public class LoadModel implements LoadContract.Model {
           callback.onLoadFailed();
           return;
         }
+        LogUtils
+            .i(TAG, "------------------------obtainWriteCardInfo end----------------------------");
         callback.onObtainWriteCardInfoSuccess();
-        LogUtils.i(TAG, "------------------------获取写卡信息完成----------------------------");
       }
 
       @Override
@@ -306,7 +323,7 @@ public class LoadModel implements LoadContract.Model {
 
   @Override
   public void gapCashLoad(final GapCashLoadCallback callback) {
-    LogUtils.i(TAG, "------------------------开始圈存----------------------------");
+    LogUtils.i(TAG, "------------------------gapCashLoad start----------------------------");
     //100 -> 000064
     String gapCashHexStr = Integer.toHexString(gapCash);
     int zeroLen = 6 - gapCashHexStr.length();
@@ -357,8 +374,8 @@ public class LoadModel implements LoadContract.Model {
           callback.onLoadFailedGapReversal();
           return;
         }
+        LogUtils.i(TAG, "------------------------gapCashLoad end----------------------------");
         callback.onLoadSuccess();
-        LogUtils.i(TAG, "------------------------圈存完成----------------------------");
       }
 
       @Override
@@ -371,6 +388,7 @@ public class LoadModel implements LoadContract.Model {
 
   @Override
   public void gapReversal(final GapReversalCallback callback) {
+    LogUtils.i(TAG, "------------------------gapReversal start----------------------------");
     GapReversalReq gapReversalReq = new GapReversalReq();
     gapReversalReq.setLoadTransNum(app.getLoadTransNum());
     gapReversalReq.setCardNo(mCardNo);
@@ -405,6 +423,7 @@ public class LoadModel implements LoadContract.Model {
         //String cardInfo = resp.getCardInfo();
         //写卡失败
         //sendLoadResult(LoadStatusEnum.ReverseFaild);
+        LogUtils.i(TAG, "------------------------gapReversal end----------------------------");
         callback.onGapReversalSuccess();
       }
 
@@ -417,11 +436,13 @@ public class LoadModel implements LoadContract.Model {
 
   @Override
   public void loadResultNotice(LoadStatusEnum loadState) {
+    LogUtils.i(TAG, "------------------------loadResultNotice start----------------------------");
     LoadResultNoticeReq loadResultNoticeReq = new LoadResultNoticeReq();
     loadResultNoticeReq.setLoadTransNum(app.getLoadTransNum());
     loadResultNoticeReq.setLoadState(loadState.getCode());
     reqJson = mGson.toJson(loadResultNoticeReq);
     //圈存结果通知
+    LogUtils.i(TAG, "------------------------loadResultNotice end----------------------------");
     getRequestManager().post(SERVER_URL, reqJson, new IRequestCallback() {
       @Override
       public void onSuccess(String response) {
@@ -435,12 +456,14 @@ public class LoadModel implements LoadContract.Model {
 
   @Override
   public int getBalance() {
+    LogUtils.i(TAG, "------------------------getBalance start----------------------------");
     int balance = -1;
     try {
       balance = Integer.parseInt(mCardUtil.getBalance());
     } catch (CardException e) {
       LogUtils.e(TAG, "getBalance: ", e);
     }
+    LogUtils.i(TAG, "------------------------getBalance end----------------------------");
     return balance;
   }
 

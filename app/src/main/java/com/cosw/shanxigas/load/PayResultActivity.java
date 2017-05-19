@@ -1,12 +1,14 @@
 package com.cosw.shanxigas.load;
 
 import static com.cosw.shanxigas.util.Constant.EXTRA_DESC;
+import static com.cosw.shanxigas.util.Constant.EXTRA_LOAD_AMOUNT;
 import static com.cosw.shanxigas.util.Constant.EXTRA_ORDER_NO;
 import static com.cosw.shanxigas.util.Constant.EXTRA_STATUS;
 import static com.cosw.shanxigas.util.Constant.PAY_SUCCESS_STATUS_CODE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -44,12 +46,25 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
     app = MyApplication.getInstance();
     Intent intent = getIntent();
     String orderNo = intent.getStringExtra(EXTRA_ORDER_NO);
-    MyApplication.getInstance().setOrderNo(orderNo);
+    app.setOrderNo(orderNo);
     String status = intent.getStringExtra(EXTRA_STATUS);
     String desc = intent.getStringExtra(EXTRA_DESC);
-    LogUtils.i(TAG, "PayResultActivity : " + orderNo + "|" + status + "|" + desc);
+    String loadAmount = intent.getStringExtra(EXTRA_LOAD_AMOUNT);
+    int loadMoney = 0;
+    if (!TextUtils.isEmpty(loadAmount)) {
+      try {
+        loadMoney = Integer.parseInt(loadAmount);
+      } catch (NumberFormatException e) {
+        loadMoney = 1;
+      }
+    }
+    LogUtils
+        .i(TAG, "PayResultActivity : " + orderNo + "|" + status + "|" + desc + "|" + loadAmount);
     if (PAY_SUCCESS_STATUS_CODE.equals(status)) {
       paySuccess = true;
+      if (loadMoney != 0) {
+        mPresenter.setLoadAmount(loadMoney);
+      }
       app.setOrderNo(orderNo);
     } else {
       mPresenter.onPayFailed();
@@ -76,7 +91,7 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
     tvRefresh.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        mPresenter.refreshBalance();
+        mPresenter.refreshBalance(true);
       }
     });
   }
@@ -84,7 +99,7 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
   @Override
   protected void onResume() {
     super.onResume();
-    mPresenter.refreshBalance();
+    mPresenter.refreshBalance(false);
     if (paySuccess) {
       mPresenter.load();
     }
