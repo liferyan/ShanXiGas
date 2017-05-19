@@ -1,7 +1,10 @@
 package com.cosw.shanxigas.trxrecords;
 
 import static com.cosw.shanxigas.util.Constant.TRX_FAILED_TO_LOADING_MSG;
+import static com.cosw.shanxigas.util.Constant.TRX_LOADING_ORDER_CANCEL;
 import static com.cosw.shanxigas.util.Constant.TRX_LOADING_QUERY_ORDER;
+import static com.cosw.shanxigas.util.Constant.TRX_ORDER_CANCEL_FAILED_MSG;
+import static com.cosw.shanxigas.util.Constant.TRX_ORDER_CANCEL_SUCCESS_MSG;
 
 import android.os.Handler;
 import com.cosw.shanxigas.entity.TrxDetail;
@@ -14,7 +17,8 @@ import java.util.List;
 
 public class TrxRecordPresenter implements TrxRecordsContract.Presenter,
     TrxRecordsContract.Model.LoadQueryOrderListCallback,
-    TrxRecordsContract.Model.LoadQueryOrderDetailCallback {
+    TrxRecordsContract.Model.LoadQueryOrderDetailCallback,
+    TrxRecordsContract.Model.OrderCancelCallback {
 
   private TrxRecordsContract.View mView;
   private TrxRecordsContract.Model mModel;
@@ -32,6 +36,12 @@ public class TrxRecordPresenter implements TrxRecordsContract.Presenter,
   private void setMessage(String message) {
     mView.hideLoading();
     mView.showMessage(message);
+  }
+
+  @Override
+  public void orderCancel(String orderNo) {
+    mView.showLoading(TRX_LOADING_ORDER_CANCEL);
+    mModel.orderCancel(orderNo, this);
   }
 
   @Override
@@ -74,5 +84,16 @@ public class TrxRecordPresenter implements TrxRecordsContract.Presenter,
         mView.setData(null);
       }
     }, 500);
+  }
+
+  @Override
+  public void onOrderCancelSuccess() {
+    setMessage(TRX_ORDER_CANCEL_SUCCESS_MSG);
+    mView.setCancelSuccess();
+  }
+
+  @Override
+  public void onOrderCancelFailed() {
+    setMessage(TRX_ORDER_CANCEL_FAILED_MSG);
   }
 }
