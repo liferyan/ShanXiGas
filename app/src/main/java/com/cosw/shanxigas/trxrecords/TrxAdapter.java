@@ -19,10 +19,17 @@ import java.util.List;
 public class TrxAdapter extends ArrayAdapter<TrxRecords> {
 
   private int resourceId;
+  private List<TrxRecords> trxRecordsList;
 
   public TrxAdapter(Context context, int resource, List<TrxRecords> objects) {
     super(context, resource, objects);
+    trxRecordsList = objects;
     resourceId = resource;
+  }
+
+  public void clear() {
+    super.clear();
+    trxRecordsList.clear();
   }
 
   @Override

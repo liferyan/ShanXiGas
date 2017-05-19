@@ -93,6 +93,14 @@ public class TransactionRecordsActivity extends BaseActivity implements TrxRecor
     mPresenter.start();
   }
 
+  @Override
+  protected void onResume() {
+    super.onResume();
+    hasLoadedCount = 0;
+    mAdapter.clear();
+    mPresenter.start();
+  }
+
   private void initViews() {
     TextView tvTitle = (TextView) findViewById(R.id.tv_title);
     tvTitle.setText(R.string.transaction_records_title);
@@ -148,5 +156,9 @@ public class TransactionRecordsActivity extends BaseActivity implements TrxRecor
 
   @Override
   public void setDetail(TrxDetail detail) {
+  }
+
+  @Override
+  public void setCancelSuccess() {
   }
 }
