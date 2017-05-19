@@ -23,13 +23,13 @@
     请务必保持网络畅通，谢谢 ！</string>
 
 
-  <string name="main_to_load">空中充值</string>
-  <string name="main_to_transaction_records">交易记录</string>
+  <string name="main_to_load">空中圈存</string>
+  <string name="main_to_transaction_records">圈存记录</string>
   <string name="main_to_settings">设置</string>
   <string name="main_card_no">卡号:</string>
   <string name="main_balance">余额:</string>
 
-  <string name="load_title">空中充值</string>
+  <string name="load_title">空中圈存</string>
   <string name="load_pay_title">和包支付</string>
   <string name="load_title_refresh_balance">刷新余额</string>
   <string name="load_gas_price">购气单价:</string>
@@ -42,15 +42,16 @@
   <string name="load_limit_money">限购金额:</string>
   <string name="load_money_to_load">购气金额:</string>
   <string name="load_total_money">合计总额:</string>
-  <string name="load_button_pay">充 值</string>
+  <string name="load_button_pay">圈  存</string>
   <string name="load_friendly_tips">友情提示:</string>
-  <string name="load_tips_load">\t\t使用手机给天然气表充值（简称上表）操作前手机需要打开NFC功能，上表操作无需
+  <string name="load_tips_load">\t\t使用手机给天然气表圈存（简称上表）操作前手机需要打开NFC功能，上表操作无需
     打开本插件。如果您在打开本插件的情况下，进行上表操作，请在上表成功后，点击右上角的刷新余额按钮。如遇购气成功 ，
     但无法上表，请与秦华天然气公司联系，谢谢 ！</string>
-  <string name="load_tips_load_success">亲,请您先上表,刷新余额后,再进行充值操作 !</string>
+  <string name="load_tips_load_success">亲,请您先上表,刷新余额后,再进行圈存操作 !</string>
+  <string name="load_tips_not_zero">亲,请您先上表,再进行补圈存操作 !</string>
 
   <string name="settings_default_account_key">account</string>
-  <string name="settings_default_account_label">设置默认充值和包账号</string>
+  <string name="settings_default_account_label">设置默认圈存和包账号</string>
   <string name="settings_customer_service_key">customer_service</string>
   <string name="settings_customer_service_phone_number">96777</string>
   <string name="settings_customer_service_phone_number_intent">tel:96777</string>
@@ -64,9 +65,11 @@
   <string name="dialog_alert_button_determine">确 定</string>
   <string name="dialog_alert_title">注意</string>
 
-  <string name="transaction_records_title">交易记录</string>
+  <string name="transaction_records_title">圈存记录</string>
   <string name="transaction_records_detail_title">详情</string>
-  <string name="transaction_records_button_order_cancel">撤 销</string>
+  <string name="transaction_records_button_order_cancel">取 消</string>
+  <string name="transaction_records_button_order_load">圈  存</string>
+  <string name="transaction_records_button_back">返  回</string>
   <string name="transaction_records_no_record">没有交易记录</string>
   <string name="transaction_record_load_no_data">加载完成,没有更多数据了…</string>
   <string name="transaction_records_loading">正在加载…</string>
