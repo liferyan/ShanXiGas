@@ -5,6 +5,7 @@ public final class Constant {
   //Network Related
   /*URL= "http://120.192.246.66:9092/airdeposit-trans/service/biz.htm";*/
   private static final String SERVER_IP_PORT = "120.192.246.66:9092";
+  //  private static final String SERVER_IP_PORT = "192.168.199.185:9092";
   public static final String SERVER_URL =
       "http://" + SERVER_IP_PORT + "/airdeposit-trans/service/biz.htm";
 

@@ -20,6 +20,11 @@
 
   <Preference
     android:icon="@drawable/ic_information_outline_grey600_24dp"
+    android:key="@string/settings_unbind_key"
+    android:title="@string/settings_unbind_label" />
+
+  <Preference
+    android:icon="@drawable/ic_information_outline_grey600_24dp"
     android:key="@string/settings_app_version_key"
     android:title="@string/settings_app_version_label" />
 

@@ -56,6 +56,8 @@
   <string name="settings_customer_service_phone_number">96777</string>
   <string name="settings_customer_service_phone_number_intent">tel:96777</string>
   <string name="settings_customer_service_label">客服</string>
+  <string name="settings_unbind_key">unbind</string>
+  <string name="settings_unbind_label">解绑</string>
   <string name="settings_app_version_label">版本号</string>
   <string name="settings_title">设置</string>
   <string name="settings_app_version_key">app_version</string>

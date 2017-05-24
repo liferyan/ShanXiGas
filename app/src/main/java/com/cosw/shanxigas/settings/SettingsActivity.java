@@ -1,8 +1,12 @@
 package com.cosw.shanxigas.settings;
 
+import static com.cosw.shanxigas.util.Constant.SERVER_URL;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -10,12 +14,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.cosw.protocol.req.CardUnBindReq;
+import com.cosw.protocol.resp.CardUnBindResp;
 import com.cosw.shanxigas.R;
 import com.cosw.shanxigas.app.MyApplication;
 import com.cosw.shanxigas.base.BaseActivity;
 import com.cosw.shanxigas.hidden.HiddenActivity;
+import com.cosw.shanxigas.hidden.HiddenModel;
+import com.cosw.shanxigas.util.DataUtil;
 import com.cosw.shanxigas.util.StringUtil;
+import com.cosw.shanxigas.util.net.RequestFactory;
 import com.cosw.shanxigas.widget.MyAlertDialog;
+import com.google.gson.Gson;
 
 /**
  * Created by Ryan on 2017/1/4.
@@ -25,9 +35,34 @@ public class SettingsActivity extends BaseActivity {
 
   private static final String TAG = "SettingsActivity";
 
+  public static final int UNBIND_SUCCESS = 1;
+  public static final int UNBIND_FAILED = 0;
+
   private TextView tvTitle;
 
   public static final String ACCOUNT = "account";
+
+  private static SettingsActivity activity;
+
+  private HiddenModel mModel;
+
+  private MyApplication app;
+
+  private Handler mHandler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+      switch (msg.what) {
+        case UNBIND_SUCCESS:
+          hideLoading();
+          showMessage("解绑成功 !");
+          break;
+        case UNBIND_FAILED:
+          hideLoading();
+          showMessage("解绑失败 !");
+          break;
+      }
+    }
+  };
 
 
   @Override
@@ -36,6 +71,8 @@ public class SettingsActivity extends BaseActivity {
     setContentView(R.layout.settings_act);
 
     initViews();
+    activity = this;
+    app = MyApplication.getInstance();
   }
 
   private void initViews() {
@@ -51,6 +88,43 @@ public class SettingsActivity extends BaseActivity {
         finish();
       }
     });
+  }
+
+  public static void unbind() {
+    activity.showLoading("解绑中...");
+    activity.unBind(activity.mHandler);
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    activity = null;
+  }
+
+  public void unBind(final Handler handler) {
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        CardUnBindReq req = new CardUnBindReq();
+        req.setCardNo(app.getCardNo());
+        req.setAtr(app.getATR());
+        //req.setTelephone("");
+        req.setPayAccount(app.getAccount());
+        final Gson mGson = new Gson();
+        String reqJson = mGson.toJson(req);
+        String respJson = RequestFactory.getSyncRequestManager().syncPost(SERVER_URL, reqJson);
+        if (respJson == null) {
+          handler.obtainMessage(UNBIND_FAILED).sendToTarget();
+          return;
+        }
+        CardUnBindResp resp = mGson.fromJson(respJson, CardUnBindResp.class);
+        if (!DataUtil.checkResponseSuccess(resp)) {
+          handler.obtainMessage(UNBIND_FAILED).sendToTarget();
+          return;
+        }
+        handler.obtainMessage(UNBIND_SUCCESS).sendToTarget();
+      }
+    }).start();
   }
 
   public static class ShanXiGasPreferenceFragment extends PreferenceFragment
@@ -78,6 +152,14 @@ public class SettingsActivity extends BaseActivity {
       /*Preference customerService = findPreference(
           getString(R.string.settings_customer_service_key));
       customerService.setSummary(getString(R.string.settings_customer_service_phone_number));*/
+      Preference unbind = findPreference(getString(R.string.settings_unbind_key));
+      unbind.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+          unbind();
+          return false;
+        }
+      });
       Preference appVersion = findPreference(getString(R.string.settings_app_version_key));
       String version = MyApplication.getInstance().getAppVersion();
       appVersion.setSummary(version);
