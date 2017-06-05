@@ -13,26 +13,24 @@ import com.cosw.shanxigas.R;
  */
 public class MyAlertDialog extends Dialog implements View.OnClickListener {
 
-  private TextView tvTitle;
   private TextView tvDialog;
-  private TextView btnDialog;
+  private TextView btnPositive;
+  private TextView btnNegative;
   private AlertDialogCallBack mCallback;
+
+  private boolean onlyPositive;
 
   Context mContext;
 
-  public MyAlertDialog(Context context) {
+  public MyAlertDialog(Context context, boolean onlyPositive) {
     super(context, R.style.alert_dialog);
     mContext = context;
+    this.onlyPositive = onlyPositive;
   }
 
   public void setCallback(AlertDialogCallBack callback) {
     mCallback = callback;
   }
-
-  /*public MyAlertDialog(Context context, int themeResId) {
-    super(context, themeResId);
-    mContext = context;
-  }*/
 
   @Override
   protected void onStart() {
@@ -50,12 +48,15 @@ public class MyAlertDialog extends Dialog implements View.OnClickListener {
     tvDialog.setText(title);
   }
 
-  @Override
-  public void dismiss() {
+  private void positive() {
     super.dismiss();
     if (mCallback != null) {
-      mCallback.onAlertDismiss();
+      mCallback.onPositive();
     }
+  }
+
+  private void negative() {
+    super.dismiss();
   }
 
   @Override
@@ -63,11 +64,15 @@ public class MyAlertDialog extends Dialog implements View.OnClickListener {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.layout_dialog_alert);
-    tvTitle = (TextView) findViewById(R.id.tv_dialog_title);
     tvDialog = (TextView) findViewById(R.id.tv_dialog);
     tvDialog.setMovementMethod(ScrollingMovementMethod.getInstance());
-    btnDialog = (TextView) findViewById(R.id.btn_dialog);
-    btnDialog.setOnClickListener(this);
+    btnNegative = (TextView) findViewById(R.id.btn_negative);
+    btnNegative.setOnClickListener(this);
+    btnPositive = (TextView) findViewById(R.id.btn_positive);
+    btnPositive.setOnClickListener(this);
+    if (onlyPositive) {
+      btnNegative.setVisibility(View.GONE);
+    }
     setCancelable(false);
     setCanceledOnTouchOutside(false);
   }
@@ -75,9 +80,14 @@ public class MyAlertDialog extends Dialog implements View.OnClickListener {
   @Override
   public void onClick(View v) {
     switch (v.getId()) {
-      case R.id.btn_dialog:
-        dismiss();
+      case R.id.btn_positive:
+        positive();
+        break;
+      case R.id.btn_negative:
+        negative();
         break;
     }
   }
+
+
 }

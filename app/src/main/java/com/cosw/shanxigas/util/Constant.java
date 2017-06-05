@@ -36,9 +36,7 @@ public final class Constant {
   public static final String LOAD_TRANS_NUM_DATA_FORMAT = "yyyyMMddHHmmss";
 
   public static final String WAIT_PAY = "待支付";
-  public static final String WAIT_LOAD = "待圈存";
   public static final String HAS_CANCEL = "已撤销";
-  public static final String BUTTON_LOAD = "圈  存";
 
   public static final String INITIAL_CARD_NO = "0000000000";
   public static final String INITIAL_ACCOUNT = "00000000000";

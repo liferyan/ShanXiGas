@@ -46,7 +46,7 @@ public class BaseActivity extends AppCompatActivity {
   }
 
   private void initViews() {
-    alertDialog = new MyAlertDialog(mContext);
+    alertDialog = new MyAlertDialog(mContext, true);
     loadingDialog = new MyProgressDialog(mContext);
   }
 

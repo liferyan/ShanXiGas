@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         if (TextUtils.isEmpty(app.getAccount()) || INITIAL_ACCOUNT.equals(app.getAccount())) {
           showMessage(MAIN_FAILED_TO_CHECK_ACCOUNT_MSG, new AlertDialogCallBack() {
             @Override
-            public void onAlertDismiss() {
+            public void onPositive() {
               Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
               startActivity(settingsIntent);
             }

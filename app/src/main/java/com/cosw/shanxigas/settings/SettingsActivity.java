@@ -20,10 +20,10 @@ import com.cosw.shanxigas.R;
 import com.cosw.shanxigas.app.MyApplication;
 import com.cosw.shanxigas.base.BaseActivity;
 import com.cosw.shanxigas.hidden.HiddenActivity;
-import com.cosw.shanxigas.hidden.HiddenModel;
 import com.cosw.shanxigas.util.DataUtil;
 import com.cosw.shanxigas.util.StringUtil;
 import com.cosw.shanxigas.util.net.RequestFactory;
+import com.cosw.shanxigas.widget.AlertDialogCallBack;
 import com.cosw.shanxigas.widget.MyAlertDialog;
 import com.google.gson.Gson;
 
@@ -44,8 +44,6 @@ public class SettingsActivity extends BaseActivity {
 
   private static SettingsActivity activity;
 
-  private HiddenModel mModel;
-
   private MyApplication app;
 
   private Handler mHandler = new Handler() {
@@ -54,11 +52,19 @@ public class SettingsActivity extends BaseActivity {
       switch (msg.what) {
         case UNBIND_SUCCESS:
           hideLoading();
-          showMessage("解绑成功 !");
+          showMessage(getString(R.string.settings_unbind_success), new AlertDialogCallBack() {
+            @Override
+            public void onPositive() {
+              //跳转App初始界面
+              final Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+              intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+              startActivity(intent);
+            }
+          });
           break;
         case UNBIND_FAILED:
           hideLoading();
-          showMessage("解绑失败 !");
+          showMessage(getString(R.string.settings_unbind_failed));
           break;
       }
     }
@@ -91,8 +97,16 @@ public class SettingsActivity extends BaseActivity {
   }
 
   public static void unbind() {
-    activity.showLoading("解绑中...");
-    activity.unBind(activity.mHandler);
+    MyAlertDialog alertDialog = new MyAlertDialog(activity, false);
+    alertDialog.setCallback(new AlertDialogCallBack() {
+      @Override
+      public void onPositive() {
+        activity.showLoading(activity.getString(R.string.settings_unbinding));
+        activity.unBind(activity.mHandler);
+      }
+    });
+    alertDialog.show();
+    alertDialog.setTitle(R.string.settings_unbind_title);
   }
 
   @Override
@@ -193,7 +207,7 @@ public class SettingsActivity extends BaseActivity {
       String stringValue = value.toString();
       if (getString(R.string.settings_default_account_key).equals(preference.getKey())) {
         if (notFirstShow && !StringUtil.isMobileNO(stringValue)) {
-          MyAlertDialog alertDialog = new MyAlertDialog(getActivity());
+          MyAlertDialog alertDialog = new MyAlertDialog(getActivity(), true);
           alertDialog.show();
           alertDialog.setTitle(app.getString(R.string.settings_failed_to_check_mobile_msg));
           return false;

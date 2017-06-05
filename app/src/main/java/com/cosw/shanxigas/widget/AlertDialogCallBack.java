@@ -6,6 +6,7 @@ package com.cosw.shanxigas.widget;
 
 public interface AlertDialogCallBack {
 
-  void onAlertDismiss();
+  //确定
+  void onPositive();
 
 }
