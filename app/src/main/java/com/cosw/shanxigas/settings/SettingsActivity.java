@@ -19,8 +19,11 @@ import com.cosw.protocol.resp.CardUnBindResp;
 import com.cosw.shanxigas.R;
 import com.cosw.shanxigas.app.MyApplication;
 import com.cosw.shanxigas.base.BaseActivity;
+import com.cosw.shanxigas.card.CardException;
+import com.cosw.shanxigas.card.CardUtil;
 import com.cosw.shanxigas.hidden.HiddenActivity;
 import com.cosw.shanxigas.util.DataUtil;
+import com.cosw.shanxigas.util.LogUtils;
 import com.cosw.shanxigas.util.StringUtil;
 import com.cosw.shanxigas.util.net.RequestFactory;
 import com.cosw.shanxigas.widget.AlertDialogCallBack;
@@ -43,6 +46,8 @@ public class SettingsActivity extends BaseActivity {
   public static final String ACCOUNT = "account";
 
   private static SettingsActivity activity;
+
+  private CardUtil mCardUtil;
 
   private MyApplication app;
 
@@ -79,6 +84,7 @@ public class SettingsActivity extends BaseActivity {
     initViews();
     activity = this;
     app = MyApplication.getInstance();
+    mCardUtil = CardUtil.getInstance(app.getCard());
   }
 
   private void initViews() {
@@ -96,7 +102,23 @@ public class SettingsActivity extends BaseActivity {
     });
   }
 
+  private int getBalance() {
+    LogUtils.i(TAG, "------------------------getBalance start----------------------------");
+    int balance = -1;
+    try {
+      balance = Integer.parseInt(mCardUtil.getBalance());
+    } catch (CardException e) {
+      LogUtils.e(TAG, "getBalance: ", e);
+    }
+    LogUtils.i(TAG, "------------------------getBalance end----------------------------");
+    return balance;
+  }
+
   public static void unbind() {
+    if (activity.getBalance() != 0) {
+      activity.showMessage(activity.getString(R.string.settings_unbind_has_balance));
+      return;
+    }
     MyAlertDialog alertDialog = new MyAlertDialog(activity, false);
     alertDialog.setCallback(new AlertDialogCallBack() {
       @Override

@@ -58,8 +58,9 @@
   <string name="settings_customer_service_label">客服</string>
   <string name="settings_unbind_key">unbind</string>
   <string name="settings_unbind_label">解绑</string>
-  <string name="settings_unbind_title">解除绑定</string>
+  <string name="settings_unbind_title">请确认是否解除绑定?</string>
   <string name="settings_unbinding">正在解绑...</string>
+  <string name="settings_unbind_has_balance">当前存在余额，请先上表！</string>
   <string name="settings_unbind_success">解绑成功！</string>
   <string name="settings_unbind_failed">解绑失败！</string>
   <string name="settings_app_version_label">版本号</string>
