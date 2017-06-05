@@ -102,6 +102,7 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
     mPresenter.refreshBalance(false);
     if (paySuccess) {
       mPresenter.load();
+      paySuccess = false;
     }
   }
 
