@@ -32,8 +32,6 @@ public interface LoadContract {
 
     void refreshBalance(boolean forceRefresh);
 
-    void onLoadFailed();
-
     void onPayFailed();
 
   }
@@ -49,7 +47,7 @@ public interface LoadContract {
 
     interface LoadBaseCallback {
 
-      void onLoadFailed();
+      void onLoadFailed(boolean sendResultNotice);
     }
 
     interface HeBaoWapPayCallback {

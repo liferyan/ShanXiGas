@@ -163,10 +163,12 @@ public class LoadPresenter implements LoadContract.Presenter,
   }
 
   @Override
-  public void onLoadFailed() {
+  public void onLoadFailed(boolean sendResultNotice) {
     setMessage(LOAD_FAILED_MSG);
     //发圈存失败结果通知
-    mModel.loadResultNotice(LoadStatusEnum.LoadFaild);
+    if (sendResultNotice) {
+      mModel.loadResultNotice(LoadStatusEnum.LoadFaild);
+    }
   }
 
   @Override

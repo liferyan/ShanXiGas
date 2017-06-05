@@ -264,7 +264,7 @@ public class LoadModel implements LoadContract.Model {
       random = mCard.transmit(GET_RANDOM_8).getData();
     } catch (CardException e) {
       LogUtils.e(TAG, "obtainWriteCardInfo: ", e);
-      callback.onLoadFailed();
+      callback.onLoadFailed(false);
       return;
     }
     ObtainWriteCardInfoReq req = new ObtainWriteCardInfoReq();
@@ -293,7 +293,7 @@ public class LoadModel implements LoadContract.Model {
         ObtainWriteCardInfoResp resp = mGson.fromJson(response, ObtainWriteCardInfoResp.class);
         if (!DataUtil.checkResponseSuccess(resp)) {
           LogUtils.i(TAG, "obtainWriteCardInfo: " + resp.getResponseDesc());
-          callback.onLoadFailed();
+          callback.onLoadFailed(true);
           return;
         }
         String apduStream = resp.getApduStream();
@@ -304,7 +304,7 @@ public class LoadModel implements LoadContract.Model {
           }
         } catch (CardException e) {
           LogUtils.e(TAG, "obtainWriteCardInfo: ", e);
-          callback.onLoadFailed();
+          callback.onLoadFailed(true);
           return;
         }
         LogUtils
@@ -315,7 +315,7 @@ public class LoadModel implements LoadContract.Model {
       @Override
       public void onError(Throwable throwable) {
         LogUtils.e(TAG, "obtainWriteCardInfo: ", throwable);
-        callback.onLoadFailed();
+        callback.onLoadFailed(true);
       }
     });
   }
@@ -336,7 +336,7 @@ public class LoadModel implements LoadContract.Model {
       loadResult = mCard.transmit(initForLoadAPDU).getData();
     } catch (CardException e) {
       LogUtils.e(TAG, "gapCashLoad: ", e);
-      callback.onLoadFailed();
+      callback.onLoadFailed(true);
       return;
     }
     GapCashLoadReq req = new GapCashLoadReq();
@@ -364,7 +364,7 @@ public class LoadModel implements LoadContract.Model {
         GapCashLoadResp resp = mGson.fromJson(response, GapCashLoadResp.class);
         if (!DataUtil.checkResponseSuccess(resp)) {
           LogUtils.i(TAG, "gapCashLoad: " + resp.getResponseDesc());
-          callback.onLoadFailed();
+          callback.onLoadFailed(true);
           return;
         }
         String creditForLoadAPDU = resp.getLoadData();
@@ -381,7 +381,7 @@ public class LoadModel implements LoadContract.Model {
       @Override
       public void onError(Throwable throwable) {
         LogUtils.e(TAG, "gapCashLoad: ", throwable);
-        callback.onLoadFailed();
+        callback.onLoadFailed(true);
       }
     });
   }
