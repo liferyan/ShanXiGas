@@ -1,14 +1,10 @@
 package com.cosw.shanxigas.trxrecords;
 
 import static com.cosw.shanxigas.R.id.status;
-import static com.cosw.shanxigas.util.Constant.EXTRA_LOAD_AMOUNT;
 import static com.cosw.shanxigas.util.Constant.EXTRA_ORDER_NO;
-import static com.cosw.shanxigas.util.Constant.EXTRA_STATUS;
 import static com.cosw.shanxigas.util.Constant.HAS_CANCEL;
-import static com.cosw.shanxigas.util.Constant.PAY_SUCCESS_STATUS_CODE;
 import static com.cosw.shanxigas.util.Constant.TRX_STATUS_LOAD_SUCCESS;
 import static com.cosw.shanxigas.util.Constant.TRX_STATUS_REVERSAL_SUCCESS;
-import static com.cosw.shanxigas.util.Constant.WAIT_LOAD;
 import static com.cosw.shanxigas.util.Constant.WAIT_PAY;
 
 import android.content.Intent;
@@ -23,11 +19,9 @@ import android.widget.TextView;
 import com.cosw.shanxigas.R;
 import com.cosw.shanxigas.app.MyApplication;
 import com.cosw.shanxigas.base.BaseActivity;
-import com.cosw.shanxigas.card.CardException;
 import com.cosw.shanxigas.card.CardUtil;
 import com.cosw.shanxigas.entity.TrxDetail;
 import com.cosw.shanxigas.entity.TrxRecords;
-import com.cosw.shanxigas.load.PayResultActivity;
 import com.cosw.shanxigas.trxrecords.TrxRecordsContract.Presenter;
 import java.util.List;
 
@@ -51,7 +45,6 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
   private TextView tvStatus;
   private TextView tvCreateTime;
   private TextView tvUpdateTime;
-  private TextView btOrderLoad;
   private TextView btOrderCancel;
   private TextView btOrderBack;
   private View loadTips;
@@ -106,17 +99,6 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
       @Override
       public void onClick(View v) {
         finish();
-      }
-    });
-    btOrderLoad = (Button) findViewById(R.id.bt_order_load);
-    btOrderLoad.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent intent = new Intent(TransactionDetailActivity.this, PayResultActivity.class);
-        intent.putExtra(EXTRA_ORDER_NO, orderNo);
-        intent.putExtra(EXTRA_STATUS, PAY_SUCCESS_STATUS_CODE);
-        intent.putExtra(EXTRA_LOAD_AMOUNT, loadAmount);
-        startActivity(intent);
       }
     });
     btOrderCancel = (Button) findViewById(R.id.bt_order_cancel);
@@ -176,31 +158,14 @@ public class TransactionDetailActivity extends BaseActivity implements TrxRecord
 
     tvCreateTime.setText(detail.getCreateTime());
     tvUpdateTime.setText(detail.getUpdateTime());
-    if (WAIT_LOAD.equals(orderStatus)) {
-      //卡内有余额不能圈存
-      int balance;
-      try {
-        balance = Integer.parseInt(mCardUtil.getBalance());
-      } catch (CardException e) {
-        balance = 0;
-      }
-      if (balance != 0) {
-        btOrderLoad.setEnabled(false);
-        loadTips.setVisibility(View.VISIBLE);
-      }
 
-      btOrderBack.setVisibility(View.GONE);
-      btOrderCancel.setVisibility(View.GONE);
-      btOrderLoad.setVisibility(View.VISIBLE);
-    } else if (WAIT_PAY.equals(orderStatus)) {
+    if (WAIT_PAY.equals(orderStatus)) {
       btOrderBack.setVisibility(View.GONE);
       btOrderCancel.setVisibility(View.VISIBLE);
-      btOrderLoad.setVisibility(View.GONE);
       loadTips.setVisibility(View.GONE);
     } else {
       btOrderBack.setVisibility(View.VISIBLE);
       btOrderCancel.setVisibility(View.GONE);
-      btOrderLoad.setVisibility(View.GONE);
       loadTips.setVisibility(View.GONE);
     }
   }

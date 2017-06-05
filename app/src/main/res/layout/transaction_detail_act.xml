@@ -372,16 +372,6 @@
       </LinearLayout>
 
       <Button
-        android:id="@+id/bt_order_load"
-        style="@style/buttonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/transaction_records_button_order_load"
-        android:visibility="gone" />
-      <Button
         android:id="@+id/bt_order_cancel"
         style="@style/buttonStyle"
         android:layout_width="match_parent"
