@@ -44,6 +44,7 @@ public class LoadPresenter implements LoadContract.Presenter,
   private static int loadAmount;
   private int balance;
   private String mCardNo;
+  private MyApplication app;
 
   private Handler mHandler = new Handler() {
     @Override
@@ -52,6 +53,7 @@ public class LoadPresenter implements LoadContract.Presenter,
         case QUERY_INFO_SUCCESS:
           hasLoadCardPriceInfo = true;
           QueryCardInfoForPriceResp resp = (QueryCardInfoForPriceResp) msg.obj;
+          app.setPrice(Double.parseDouble(resp.getPrice()));
           mLoadView.hideLoading();
           mLoadView
               .setCardFullInfo(NumberFormat.getCurrencyInstance().format(balance) + "元", mCardNo,
@@ -69,7 +71,8 @@ public class LoadPresenter implements LoadContract.Presenter,
   public LoadPresenter(LoadContract.View loadView, LoadContract.Model model) {
     mLoadView = loadView;
     mModel = model;
-    mCardNo = MyApplication.getInstance().getCardNo();
+    app = MyApplication.getInstance();
+    mCardNo = app.getCardNo();
   }
 
   @Override

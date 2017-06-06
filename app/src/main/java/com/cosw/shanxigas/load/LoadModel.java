@@ -180,6 +180,7 @@ public class LoadModel implements LoadContract.Model {
         String priceStr = resp.getPrice();
         String loadLimitStr = String.valueOf(resp.getMaxPrice());
         price = Double.parseDouble(priceStr);
+        app.setPrice(price);
         wgStartTime = resp.getWgStartTime();
         wgEndTime = resp.getWgEndTime();
         wgYears = Integer.parseInt(resp.getWgYears());
@@ -270,6 +271,7 @@ public class LoadModel implements LoadContract.Model {
     gapCash = loadAmount;
     req.setCardNo(mCardNo);
     //req.setTeller(PAY_ACCOUNT);
+    price = app.getPrice();
     gapNum = (int) (loadAmount / price);
     req.setGapNum(String.valueOf(gapNum));
     req.setGapCount(gapCountStr);

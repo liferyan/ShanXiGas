@@ -27,9 +27,9 @@ public class OkhttpRequestManager implements IRequestManager {
 
   private OkhttpRequestManager() {
     mOkHttpClient = new OkHttpClient.Builder()
-        .connectTimeout(5, TimeUnit.SECONDS)
-        .readTimeout(5, TimeUnit.SECONDS)
-        .writeTimeout(5, TimeUnit.SECONDS)
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
         .build();
     mHander = new Handler();
   }

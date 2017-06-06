@@ -53,7 +53,17 @@ public class MyApplication extends Application {
   private String mOrderNo;
   private String mAppVersion;
 
+  private double price;
+
   private SEService mSeService;
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
+  }
 
   public void setAccount(String account) {
     mAccount = account;

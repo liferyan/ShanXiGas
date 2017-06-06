@@ -2,12 +2,15 @@ package com.cosw.shanxigas.util;
 
 import android.content.Context;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringUtil {
+
+  private static final String TAG = "StringUtil";
 
   private static final String HexCode[] = {"0", "1", "2", "3", "4", "5", "6",
       "7", "8", "9", "A", "B", "C", "D", "E", "F"};
@@ -36,6 +39,7 @@ public class StringUtil {
   }
 
   public static String byteArrayToHexString(byte b[]) {
+    LogUtils.i(TAG, "byte b:" + Arrays.toString(b));
     if (b == null) {
       return null;
     }
@@ -43,6 +47,7 @@ public class StringUtil {
     for (byte aB : b) {
       result = result + byteToHexString(aB);
     }
+    LogUtils.i(TAG, "result:" + result);
     return result;
   }
 

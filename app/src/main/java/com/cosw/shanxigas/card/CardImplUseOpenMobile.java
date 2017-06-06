@@ -56,11 +56,16 @@ public class CardImplUseOpenMobile implements ICard {
       }
       if (app.getATR() == null || app.getATR().length() == 0) {
         byte atr[] = session.getATR();
-        if (atr == null) {
+        if (atr == null || atr.length == 0) {
           LogUtils.i(TAG, "获取卡片ATR失败");
           throw new CardException("获取卡片ATR失败");
         }
-        app.setATR(StringUtil.byteArrayToHexString(atr));
+        String atrStr = StringUtil.byteArrayToHexString(atr);
+        LogUtils.i(TAG, "atrStr:" + atrStr);
+        if (aidStr == null || atrStr.length() == 0) {
+          throw new CardException("获取卡片ATR失败");
+        }
+        app.setATR(atrStr);
       }
       channel = session.openLogicalChannel(aid);
     } catch (Exception e) {
