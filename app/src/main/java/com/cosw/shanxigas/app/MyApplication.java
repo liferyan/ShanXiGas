@@ -132,6 +132,17 @@ public class MyApplication extends Application {
         boolean hasBind = false;
         try {
           LogUtils.i(TAG, getString(R.string.application_start_connect_card_app));
+          while (true) {
+            if (seHasConnected) {
+              break;
+            }
+            //等待SE建立连接
+            try {
+              Thread.sleep(50);
+            } catch (InterruptedException e) {
+              LogUtils.e(TAG, "sleep", e);
+            }
+          }
           mCard = CardFactory.getCardManager(mSeService, GAS_AID);
           LogUtils.i(TAG, getString(R.string.application_end_connect_card_app));
           //读取SIM卡燃气卡号

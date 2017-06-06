@@ -46,11 +46,19 @@ public class CardImplUseOpenMobile implements ICard {
     if (readers.length == 0) {
       throw new CardException("没有可用的reader");
     }
-    if (!readers[0].isSecureElementPresent()) {
-      throw new CardException("SE not present");
+    Reader simReader = null;
+    for (Reader reader : readers) {
+      LogUtils.i(TAG, "readers's name: " + reader.getName());
+      if (reader.getName().startsWith("SIM")) {
+        simReader = reader;
+        break;
+      }
+    }
+    if (simReader == null) {
+      throw new CardException("No Sim Reader");
     }
     try {
-      Session session = readers[0].openSession();
+      Session session = simReader.openSession();
       if (session == null) {
         throw new CardException("不能打开Session");
       }
