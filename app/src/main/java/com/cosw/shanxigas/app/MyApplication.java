@@ -156,14 +156,12 @@ public class MyApplication extends Application {
   }
 
   public String getATR() {
+    LogUtils.i(TAG, "SE getATR:" + mATR);
     return mATR;
   }
 
   public void setATR(String atr) {
-    /*if (atr == null) {
-      mATR = "3B9F95803FC7A08031E073FE211B633A104E83009000";
-      return;
-    }*/
+    LogUtils.i(TAG, "SE setATR:" + atr);
     mATR = atr;
   }
 

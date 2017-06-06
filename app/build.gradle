@@ -29,7 +29,7 @@ android {
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     //这里修改文件名
-                    def fileName = "shanxigas_v${defaultConfig.versionName}_${releaseTime()}_release.apk"
+                    def fileName = "shanxigas.apk"
                     output.outputFile = new File(outputFile.parent, fileName)
 
                 }

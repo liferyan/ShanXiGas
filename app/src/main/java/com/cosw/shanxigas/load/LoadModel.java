@@ -104,8 +104,7 @@ public class LoadModel implements LoadContract.Model {
   public void heBaoWapPay(int payMoney, final HeBaoWapPayCallback callback) {
     LogUtils.i(TAG, "------------------------heBaoWapPay start----------------------------");
     HeBaoWapPayReq req = new HeBaoWapPayReq();
-    //单位分
-    payMoney = 1;
+    //payMoney单位分
     req.setAmout(String.valueOf(payMoney));
     req.setMobileid(app.getAccount());
     req.setCardNo(mCardNo);
@@ -272,8 +271,6 @@ public class LoadModel implements LoadContract.Model {
     req.setCardNo(mCardNo);
     //req.setTeller(PAY_ACCOUNT);
     gapNum = (int) (loadAmount / price);
-    //for test
-    gapNum = 1;
     req.setGapNum(String.valueOf(gapNum));
     req.setGapCount(gapCountStr);
     req.setGapCash(loadAmount);

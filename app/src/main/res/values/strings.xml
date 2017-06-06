@@ -61,7 +61,7 @@
   <string name="settings_unbind_title">请确认是否解除绑定?</string>
   <string name="settings_unbinding">正在解绑...</string>
   <string name="settings_unbind_has_balance">当前存在余额，请先上表！</string>
-  <string name="settings_unbind_success">解绑成功！</string>
+  <string name="settings_unbind_success">解绑成功,请至和包卸载天然气卡片！</string>
   <string name="settings_unbind_failed">解绑失败！</string>
   <string name="settings_app_version_label">版本号</string>
   <string name="settings_title">设置</string>
