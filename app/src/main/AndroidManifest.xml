@@ -9,6 +9,10 @@
 
   <uses-feature android:name="android.hardware.nfc" />
 
+  <uses-library
+    android:name="org.simalliance.openmobileapi"
+    android:required="true" />
+
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
