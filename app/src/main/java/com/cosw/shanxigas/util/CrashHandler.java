@@ -70,7 +70,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
       filedir.mkdirs();
     }
     long currenttime = System.currentTimeMillis();
-    String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
+    String time = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.CHINA)
         .format(new Date(currenttime));
 
     File exfile = new File(PATH + File.separator + FILE_NAME + time + FILE_NAME_SUFEIX);

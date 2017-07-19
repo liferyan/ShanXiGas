@@ -155,6 +155,12 @@ public class MyApplication extends Application {
             hasBind = queryCardBindStatus(mCardNo);
           }
         } catch (CardException e) {
+          if (e.getMessage() == null) {
+            LogUtils.e(TAG, getString(R.string.splash_openmobileapi_failed), e);
+            handler.obtainMessage(SplashActivity.LOAD_FAILED,
+                getString(R.string.splash_openmobileapi_failed)).sendToTarget();
+            return;
+          }
           LogUtils.e(TAG, getString(R.string.splash_card_app_connect_failed), e);
           handler.obtainMessage(SplashActivity.LOAD_FAILED,
               getString(R.string.splash_card_app_connect_failed)).sendToTarget();
