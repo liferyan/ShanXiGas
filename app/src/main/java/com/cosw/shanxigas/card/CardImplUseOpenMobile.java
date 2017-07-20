@@ -42,11 +42,7 @@ public class CardImplUseOpenMobile implements ICard {
 
   private void connectToSim(SEService seService, String aidStr) throws CardException {
     byte[] aid = StringUtil.hexStringToByteArray(aidStr);
-    try {
-      readers = seService.getReaders();
-    } catch (OutOfMemoryError error) {
-      throw new CardException();
-    }
+    readers = seService.getReaders();
     if (readers.length == 0) {
       throw new CardException("没有可用的reader");
     }

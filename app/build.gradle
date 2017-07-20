@@ -39,10 +39,11 @@ android {
 }
 
 dependencies {
-    //compile fileTree(include: ['*.jar'], exclude: ['openMobileApi.jar'], dir: 'libs')
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(include: ['*.jar'], exclude: ['openMobileApi.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
-    //provided files('libs/openMobileApi.jar')
+    //provided表示只在编译时使用jar包，运行时默认环境中已经存在这个jar包了
+    //jar包在网上有下载，注意要与ROM版本一直，不要一味求最新
+    provided files('libs/openMobileApi.jar')
 }

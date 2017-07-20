@@ -9,10 +9,6 @@
 
   <uses-feature android:name="android.hardware.nfc" />
 
-  <uses-library
-    android:name="org.simalliance.openmobileapi"
-    android:required="true" />
-
   <application
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
@@ -20,6 +16,11 @@
     android:name="com.cosw.shanxigas.app.MyApplication"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+
+    <uses-library
+      android:name="org.simalliance.openmobileapi"
+      android:required="true" />
+
     <activity
       android:name="com.cosw.shanxigas.app.SplashActivity"
       android:screenOrientation="portrait">

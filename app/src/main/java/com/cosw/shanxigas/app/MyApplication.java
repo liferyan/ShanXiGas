@@ -123,12 +123,6 @@ public class MyApplication extends Application {
         if (packInfo != null) {
           mAppVersion = packInfo.versionName;
         }
-        //等待SE建立连接
-        try {
-          Thread.sleep(200);
-        } catch (InterruptedException e) {
-          LogUtils.e(TAG, "sleep", e);
-        }
         boolean hasBind = false;
         try {
           LogUtils.i(TAG, getString(R.string.application_start_connect_card_app));
