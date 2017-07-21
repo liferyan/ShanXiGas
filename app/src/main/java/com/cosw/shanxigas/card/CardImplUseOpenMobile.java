@@ -1,5 +1,6 @@
 package com.cosw.shanxigas.card;
 
+import android.text.TextUtils;
 import com.cosw.shanxigas.app.MyApplication;
 import com.cosw.shanxigas.entity.APDUReturn;
 import com.cosw.shanxigas.util.LogUtils;
@@ -70,7 +71,7 @@ public class CardImplUseOpenMobile implements ICard {
         }
         String atrStr = StringUtil.byteArrayToHexString(atr);
         LogUtils.i(TAG, "atrStr:" + atrStr);
-        if (aidStr == null || atrStr.length() == 0) {
+        if (TextUtils.isEmpty(atrStr)) {
           throw new CardException("获取卡片ATR失败");
         }
         app.setATR(atrStr);
