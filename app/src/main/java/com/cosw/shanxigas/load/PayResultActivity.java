@@ -18,6 +18,7 @@ import com.cosw.shanxigas.app.MyApplication;
 import com.cosw.shanxigas.base.BaseActivity;
 import com.cosw.shanxigas.load.LoadContract.Presenter;
 import com.cosw.shanxigas.util.LogUtils;
+import java.text.NumberFormat;
 
 public class PayResultActivity extends BaseActivity implements LoadContract.View {
 
@@ -36,6 +37,8 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
     super.onCreate(savedInstanceState);
     setContentView(R.layout.pay_result_act);
 
+    app = MyApplication.getInstance();
+
     initViews();
 
     setPresenter(new LoadPresenter(this, LoadModel.getInstance()));
@@ -43,7 +46,6 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
   }
 
   private void getPayResult() {
-    app = MyApplication.getInstance();
     Intent intent = getIntent();
     String orderNo = intent.getStringExtra(EXTRA_ORDER_NO);
     app.setOrderNo(orderNo);
@@ -75,7 +77,9 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
     TextView tvTitle = (TextView) findViewById(R.id.tv_title);
     tvTitle.setText(getString(R.string.load_title));
     tvCardNo = (TextView) findViewById(R.id.tv_card_no);
+    tvCardNo.setText(app.getCardNo());
     tvBalance = (TextView) findViewById(R.id.tv_balance);
+    tvBalance.setText(NumberFormat.getCurrencyInstance().format(0) + "元");
     // 设置消息页面为初始页面
     ImageView ivTitleLeft = (ImageView) findViewById(R.id.img_left);
     ivTitleLeft.setVisibility(View.VISIBLE);
@@ -99,10 +103,11 @@ public class PayResultActivity extends BaseActivity implements LoadContract.View
   @Override
   protected void onResume() {
     super.onResume();
-    mPresenter.refreshBalance(false);
     if (paySuccess) {
       mPresenter.load();
       paySuccess = false;
+    } else {
+      mPresenter.refreshBalance(false);
     }
   }
 

@@ -1,5 +1,6 @@
 package com.cosw.shanxigas.settings;
 
+import static com.cosw.shanxigas.util.Constant.INITIAL_ACCOUNT;
 import static com.cosw.shanxigas.util.Constant.SERVER_URL;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -24,10 +26,11 @@ import com.cosw.shanxigas.card.CardUtil;
 import com.cosw.shanxigas.hidden.HiddenActivity;
 import com.cosw.shanxigas.util.DataUtil;
 import com.cosw.shanxigas.util.LogUtils;
-import com.cosw.shanxigas.util.StringUtil;
 import com.cosw.shanxigas.util.net.RequestFactory;
 import com.cosw.shanxigas.widget.AlertDialogCallBack;
+import com.cosw.shanxigas.widget.CustomDialog;
 import com.cosw.shanxigas.widget.MyAlertDialog;
+import com.cosw.shanxigas.widget.OnDialogClickListener;
 import com.google.gson.Gson;
 
 /**
@@ -50,6 +53,8 @@ public class SettingsActivity extends BaseActivity {
   private CardUtil mCardUtil;
 
   private MyApplication app;
+
+  private CustomDialog phoneDialog;
 
   private Handler mHandler = new Handler() {
     @Override
@@ -171,7 +176,6 @@ public class SettingsActivity extends BaseActivity {
     private int clickTimes;
 
     private MyApplication app;
-    private boolean notFirstShow;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -179,15 +183,39 @@ public class SettingsActivity extends BaseActivity {
       addPreferencesFromResource(R.xml.settings_main);
 
       app = MyApplication.getInstance();
-      notFirstShow = false;
-
       clickTimes = 1;
 
-      Preference defaultAccount = findPreference(getString(R.string.settings_default_account_key));
-      bindPreferenceSummaryToValue(defaultAccount);
-      /*Preference customerService = findPreference(
-          getString(R.string.settings_customer_service_key));
-      customerService.setSummary(getString(R.string.settings_customer_service_phone_number));*/
+      final SharedPreferences prefs = PreferenceManager
+          .getDefaultSharedPreferences(app);
+
+      final Preference defaultAccount = findPreference(
+          getString(R.string.settings_default_account_key));
+      defaultAccount.setSummary(app.getAccount());
+      defaultAccount.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+        @Override
+        public boolean onPreferenceClick(Preference preference) {
+          CustomDialog dialog = new CustomDialog(getActivity());
+          String phone = prefs.getString(ACCOUNT, INITIAL_ACCOUNT);
+          if (!phone.equals(INITIAL_ACCOUNT)) {
+            dialog.setPhone(phone);
+          }
+          dialog.setOnDialogClickListener(new OnDialogClickListener() {
+            @Override
+            public void onSuccessInput(String phone) {
+              prefs.edit().putString(ACCOUNT, phone).apply();
+              app.setAccount(phone);
+              defaultAccount.setSummary(phone);
+            }
+
+            @Override
+            public void onFailInput() {
+            }
+          });
+          dialog.show();
+          return false;
+        }
+      });
+
       Preference unbind = findPreference(getString(R.string.settings_unbind_key));
       unbind.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
         @Override
@@ -216,31 +244,10 @@ public class SettingsActivity extends BaseActivity {
       });
     }
 
-    private void bindPreferenceSummaryToValue(Preference preference) {
-      preference.setOnPreferenceChangeListener(this);
-      SharedPreferences prefs = PreferenceManager
-          .getDefaultSharedPreferences(preference.getContext());
-      String prefStr = prefs.getString(preference.getKey(), "");
-      onPreferenceChange(preference, prefStr);
-    }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object value) {
-      String stringValue = value.toString();
-      if (getString(R.string.settings_default_account_key).equals(preference.getKey())) {
-        if (notFirstShow && !StringUtil.isMobileNO(stringValue)) {
-          MyAlertDialog alertDialog = new MyAlertDialog(getActivity(), true);
-          alertDialog.show();
-          alertDialog.setTitle(app.getString(R.string.settings_failed_to_check_mobile_msg));
-          return false;
-        }
-        if (notFirstShow) {
-          app.setAccount(stringValue);
-        }
-        notFirstShow = true;
-      }
-      preference.setSummary(stringValue);
-      return true;
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+      return false;
     }
   }
 }

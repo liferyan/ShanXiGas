@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="200dp"
+  android:background="#eee">
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:text="默认和包账号"
+    android:textSize="22sp" />
+
+  <EditText
+    android:id="@+id/edt_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_centerInParent="true"
+    android:padding="8dp"
+    android:background="#fff"
+    android:gravity="center"
+    android:inputType="numberDecimal"
+    android:textColor="@color/colorAccent"
+    android:textSize="18sp" />
+
+  <TextView
+    android:id="@+id/btn_ok"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:padding="16dp"
+    android:text="确定"
+    android:textColor="#2af" />
+
+  <TextView
+    android:id="@+id/btn_cancel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_toLeftOf="@id/btn_ok"
+    android:padding="16dp"
+    android:text="取消"
+    android:textColor="#2af" />
+</RelativeLayout>

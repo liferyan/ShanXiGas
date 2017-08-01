@@ -8,7 +8,7 @@
   <string name="application_end_connect_card_app">卡应用连接成功</string>
 
   <string name="splash_card_app_connect_failed">应用连接失败,请稍后再试 !</string>
-  <string name="splash_openmobileapi_failed">当前系统版本不支持天然气插件</string>
+  <string name="splash_openmobileapi_failed">当前机型不支持天然气插件</string>
 
   <string name="read_card_nfc_has_disabled">NFC功能已禁用,请开启再试 !</string>
   <string name="read_card_phone_no_nfc">设备不支持NFC,请稍后再试 !</string>

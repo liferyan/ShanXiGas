@@ -3,6 +3,7 @@ package com.cosw.shanxigas.card;
 import android.text.TextUtils;
 import com.cosw.shanxigas.app.MyApplication;
 import com.cosw.shanxigas.entity.APDUReturn;
+import com.cosw.shanxigas.util.ATRParseUtil;
 import com.cosw.shanxigas.util.LogUtils;
 import com.cosw.shanxigas.util.StringUtil;
 import org.simalliance.openmobileapi.Channel;
@@ -65,11 +66,11 @@ public class CardImplUseOpenMobile implements ICard {
       }
       if (app.getATR() == null || app.getATR().length() == 0) {
         byte atr[] = session.getATR();
-        if (atr == null || atr.length == 0) {
-          LogUtils.i(TAG, "获取卡片ATR失败");
-          throw new CardException("获取卡片ATR失败");
+        String atrStr = ATRParseUtil.parseATR(atr);
+        //atr未获取到 当前机型不支持天然气插件
+        if (atrStr == null) {
+          throw new CardException();
         }
-        String atrStr = StringUtil.byteArrayToHexString(atr);
         LogUtils.i(TAG, "atrStr:" + atrStr);
         if (TextUtils.isEmpty(atrStr)) {
           throw new CardException("获取卡片ATR失败");

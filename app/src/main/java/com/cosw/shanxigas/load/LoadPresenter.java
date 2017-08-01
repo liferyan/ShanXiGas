@@ -149,7 +149,13 @@ public class LoadPresenter implements LoadContract.Presenter,
   @Override
   public void load() {
     mLoadView.showLoading(LOAD_LOADING_LOAD);
-    mModel.obtainWriteCardInfo(loadAmount, LoadPresenter.this);
+    new Handler().postDelayed(new Runnable() {
+      @Override
+      public void run() {
+        mModel.obtainWriteCardInfo(loadAmount, LoadPresenter.this);
+      }
+    }, 3000);
+
   }
 
   @Override

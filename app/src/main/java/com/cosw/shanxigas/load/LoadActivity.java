@@ -181,5 +181,6 @@ public class LoadActivity extends BaseActivity implements LoadContract.View,
     intent.putExtra(EXTRA_METHOD, method);
     intent.putExtra(EXTRA_SESSION_ID, sessionId);
     startActivity(intent);
+    finish();
   }
 }
