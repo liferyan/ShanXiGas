@@ -32,7 +32,7 @@ public class CustomDialog extends Dialog {
   public CustomDialog(final Context context) {
     super(context);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-    setContentView(R.layout.dialog_custom);
+    setContentView(R.layout.dialog_layout);
 
     TextView ok = (TextView) findViewById(R.id.btn_ok);
     TextView cancel = (TextView) findViewById(R.id.btn_cancel);

@@ -39,7 +39,6 @@
       android:name="com.cosw.shanxigas.app.MainActivity"
       android:screenOrientation="portrait" />
     <activity
-      android:launchMode="singleTop"
       android:name="com.cosw.shanxigas.load.LoadActivity"
       android:screenOrientation="portrait" />
     <activity
@@ -60,6 +59,7 @@
     <activity
       android:name="com.cosw.shanxigas.hidden.HiddenActivity"
       android:screenOrientation="portrait" />
+
     <activity android:name="com.cosw.shanxigas.hidden.AppLogActivity" />
   </application>
 

@@ -5,19 +5,27 @@ def static releaseTime() {
 }
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'GasKey'
+            keyPassword 'coswcosw'
+            storeFile file('/Users/Ryan/Work/ProjectDoc/KeyStore/Cosw.jks')
+            storePassword 'coswcosw'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "25.0.2"
-
     defaultConfig {
         applicationId "com.cosw.shanxigas"
         minSdkVersion 15
         targetSdkVersion 19
-        versionCode 6
-        versionName "1.03"
+        versionCode 8
+        versionName "1.05"
     }
     buildTypes {
         debug {
             minifyEnabled false
+            signingConfig signingConfigs.config
         }
         release {
             minifyEnabled true
@@ -34,6 +42,7 @@ android {
 
                 }
             }
+            signingConfig signingConfigs.config
         }
     }
 }

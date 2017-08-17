@@ -27,4 +27,14 @@
   <color name="bgColor_alertview_alert">#f8f8f8</color>
   <color name="bgColor_alertview_alert_start">#f0f0f0</color>
 
+  <!-- ios confirm dialog start -->
+  <color name="ios_font_gray_b">#d4d4d3</color>
+  <color name="ios_font_tab_1">#42369a</color>
+  <color name="ios_font_tab_0">#b1b1b1</color>
+  <color name="ios_font_common_1">#424242</color>
+  <color name="ios_font_common_2">#a1a1a1</color>
+  <color name="ios_font_blue">#3D99FD</color>
+  <color name="ios_font_green">#00cccc</color>
+  <color name="ios_commom_background">#f3f3f3</color>
+
 </resources>

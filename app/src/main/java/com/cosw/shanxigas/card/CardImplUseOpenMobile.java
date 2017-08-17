@@ -77,6 +77,9 @@ public class CardImplUseOpenMobile implements ICard {
         }
         app.setATR(atrStr);
       }
+      if (channel != null && !channel.isClosed()) {
+        channel.close();
+      }
       channel = session.openLogicalChannel(aid);
     } catch (Exception e) {
       throw new CardException(e.getMessage());

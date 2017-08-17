@@ -10,7 +10,8 @@ public final class Constant {
       "http://" + SERVER_IP_PORT + "/airdeposit-trans/service/biz.htm";
 
   //Card Related
-  public static final String GAS_AID = "315041592E5359532E4444463033";
+  //public static final String GAS_AID = "315041592E5359532E4444463033";
+  public static final String GAS_AID = "112233445566778899";
   public static final String GET_RANDOM_4 = "0084000004";
   public static final String GET_RANDOM_8 = "0084000008";
   public static final String SELECT_3F01 = "00a40000023f01";

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@drawable/bg_round_white"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:padding="12dp"
+    android:gravity="center_horizontal"
+    android:text="请输入圈存和包账号"
+    android:textColor="@color/black"
+    android:textSize="16sp" />
+
+  <EditText
+    android:id="@+id/edt_input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_centerInParent="true"
+    android:inputType="numberDecimal"
+    android:padding="8dp"
+    android:background="#fff"
+    android:gravity="center"
+    android:textColor="@color/colorAccent"
+    android:textSize="18sp" />
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/ios_commom_background" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal">
+
+    <TextView
+      android:id="@+id/btn_cancel"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1.0"
+      android:background="@drawable/bg_dialog_left_white"
+      android:gravity="center"
+      android:text="取消"
+      android:textColor="@color/ios_font_common_2"
+      android:textSize="12sp" />
+
+    <View
+      android:layout_width="1dp"
+      android:layout_height="match_parent"
+      android:background="@color/ios_commom_background" />
+
+    <TextView
+      android:id="@+id/btn_ok"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1.0"
+      android:background="@drawable/bg_dialog_right_white"
+      android:gravity="center"
+      android:text="确定"
+      android:textColor="@color/ios_font_blue"
+      android:textSize="12sp" />
+
+  </LinearLayout>
+
+</LinearLayout>

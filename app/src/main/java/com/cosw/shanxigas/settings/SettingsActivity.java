@@ -190,7 +190,9 @@ public class SettingsActivity extends BaseActivity {
 
       final Preference defaultAccount = findPreference(
           getString(R.string.settings_default_account_key));
-      defaultAccount.setSummary(app.getAccount());
+      if (!INITIAL_ACCOUNT.equals(app.getAccount())) {
+        defaultAccount.setSummary(app.getAccount());
+      }
       defaultAccount.setOnPreferenceClickListener(new OnPreferenceClickListener() {
         @Override
         public boolean onPreferenceClick(Preference preference) {
